@@ -51,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				B62572511D0709A900978F5D /* FlamingOTR */,
-				B671E86A1D08609A000F23D5 /* flamingOTR_bootstrap */,
 				B671E8751D0866CB000F23D5 /* Flamingo */,
 				B62572501D0709A900978F5D /* Products */,
 			);
@@ -77,19 +76,10 @@
 			path = FlamingOTR;
 			sourceTree = "<group>";
 		};
-		B671E86A1D08609A000F23D5 /* flamingOTR_bootstrap */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = flamingOTR_bootstrap;
-			sourceTree = "<group>";
-		};
 		B671E8751D0866CB000F23D5 /* Flamingo */ = {
 			isa = PBXGroup;
 			children = (
-				B671E8811D0866CB000F23D5 /* Info.plist */,
-				B671E8881D086801000F23D5 /* Images.xcassets */,
-				B671E88D1D086B46000F23D5 /* Flamingo.app */,
+				B671E86B1D08609A000F23D5 /* main.c */,
 				B671E8791D0866CB000F23D5 /* Supporting Files */,
 			);
 			path = Flamingo;
@@ -98,7 +88,9 @@
 		B671E8791D0866CB000F23D5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B671E86B1D08609A000F23D5 /* main.c */,
+				B671E8811D0866CB000F23D5 /* Info.plist */,
+				B671E8881D086801000F23D5 /* Images.xcassets */,
+				B671E88D1D086B46000F23D5 /* Flamingo.app */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -431,6 +423,7 @@
 				B671E8841D0866CB000F23D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

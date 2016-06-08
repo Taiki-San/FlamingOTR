@@ -6,11 +6,6 @@
 //  Copyright © 2016 Taiki. All rights reserved.
 //
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
-
 int main(int argc, char const *argv[])
 {
 	char * path;
