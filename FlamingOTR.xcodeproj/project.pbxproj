@@ -22,7 +22,7 @@
 		B62572541D0709A900978F5D /* FlamingOTR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlamingOTR.m; sourceTree = "<group>"; };
 		B625725B1D0710EE00978F5D /* hooker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hooker.m; sourceTree = "<group>"; };
 		B625725D1D0710FF00978F5D /* FlamingOTR.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlamingOTR.pch; sourceTree = "<group>"; };
-		B671E86B1D08609A000F23D5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../flamingOTR_bootstrap/main.c; sourceTree = "<group>"; };
+		B671E86B1D08609A000F23D5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		B671E8741D0866CB000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B671E8811D0866CB000F23D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B671E8881D086801000F23D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
