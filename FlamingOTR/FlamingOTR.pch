@@ -1,0 +1,15 @@
+//
+//  FlamingOTR.pch
+//  FlamingOTR
+//
+//  Created by Taiki on 07/06/2016.
+//  Copyright © 2016 Taiki. All rights reserved.
+//
+
+#ifndef FlamingOTR_pch
+#define FlamingOTR_pch
+
+#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
+
+#endif /* FlamingOTR_pch */

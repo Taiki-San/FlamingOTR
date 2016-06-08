@@ -1,0 +1,438 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B62572531D0709A900978F5D /* FlamingOTR.h in Headers */ = {isa = PBXBuildFile; fileRef = B62572521D0709A900978F5D /* FlamingOTR.h */; };
+		B62572551D0709A900978F5D /* FlamingOTR.m in Sources */ = {isa = PBXBuildFile; fileRef = B62572541D0709A900978F5D /* FlamingOTR.m */; };
+		B625725C1D0710EE00978F5D /* hooker.m in Sources */ = {isa = PBXBuildFile; fileRef = B625725B1D0710EE00978F5D /* hooker.m */; };
+		B671E8851D0866EA000F23D5 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B671E86B1D08609A000F23D5 /* main.c */; };
+		B671E8891D086801000F23D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B671E8881D086801000F23D5 /* Images.xcassets */; };
+		B671E88E1D086B46000F23D5 /* Flamingo.app in Resources */ = {isa = PBXBuildFile; fileRef = B671E88D1D086B46000F23D5 /* Flamingo.app */; };
+		B671E88F1D086C52000F23D5 /* libFlamingOTR.dylib in Resources */ = {isa = PBXBuildFile; fileRef = B625724F1D0709A900978F5D /* libFlamingOTR.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B625724F1D0709A900978F5D /* libFlamingOTR.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libFlamingOTR.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62572521D0709A900978F5D /* FlamingOTR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlamingOTR.h; sourceTree = "<group>"; };
+		B62572541D0709A900978F5D /* FlamingOTR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlamingOTR.m; sourceTree = "<group>"; };
+		B625725B1D0710EE00978F5D /* hooker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hooker.m; sourceTree = "<group>"; };
+		B625725D1D0710FF00978F5D /* FlamingOTR.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlamingOTR.pch; sourceTree = "<group>"; };
+		B671E86B1D08609A000F23D5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../flamingOTR_bootstrap/main.c; sourceTree = "<group>"; };
+		B671E8741D0866CB000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B671E8811D0866CB000F23D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B671E8881D086801000F23D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B671E88D1D086B46000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Flamingo.app; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B625724C1D0709A900978F5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B671E8711D0866CB000F23D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B62572461D0709A900978F5D = {
+			isa = PBXGroup;
+			children = (
+				B62572511D0709A900978F5D /* FlamingOTR */,
+				B671E86A1D08609A000F23D5 /* flamingOTR_bootstrap */,
+				B671E8751D0866CB000F23D5 /* Flamingo */,
+				B62572501D0709A900978F5D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B62572501D0709A900978F5D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B625724F1D0709A900978F5D /* libFlamingOTR.dylib */,
+				B671E8741D0866CB000F23D5 /* Flamingo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B62572511D0709A900978F5D /* FlamingOTR */ = {
+			isa = PBXGroup;
+			children = (
+				B62572521D0709A900978F5D /* FlamingOTR.h */,
+				B62572541D0709A900978F5D /* FlamingOTR.m */,
+				B625725B1D0710EE00978F5D /* hooker.m */,
+				B625725D1D0710FF00978F5D /* FlamingOTR.pch */,
+			);
+			path = FlamingOTR;
+			sourceTree = "<group>";
+		};
+		B671E86A1D08609A000F23D5 /* flamingOTR_bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = flamingOTR_bootstrap;
+			sourceTree = "<group>";
+		};
+		B671E8751D0866CB000F23D5 /* Flamingo */ = {
+			isa = PBXGroup;
+			children = (
+				B671E8811D0866CB000F23D5 /* Info.plist */,
+				B671E8881D086801000F23D5 /* Images.xcassets */,
+				B671E88D1D086B46000F23D5 /* Flamingo.app */,
+				B671E8791D0866CB000F23D5 /* Supporting Files */,
+			);
+			path = Flamingo;
+			sourceTree = "<group>";
+		};
+		B671E8791D0866CB000F23D5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B671E86B1D08609A000F23D5 /* main.c */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B625724D1D0709A900978F5D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B62572531D0709A900978F5D /* FlamingOTR.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B625724E1D0709A900978F5D /* FlamingOTR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B62572581D0709A900978F5D /* Build configuration list for PBXNativeTarget "FlamingOTR" */;
+			buildPhases = (
+				B625724B1D0709A900978F5D /* Sources */,
+				B625724C1D0709A900978F5D /* Frameworks */,
+				B625724D1D0709A900978F5D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlamingOTR;
+			productName = FlamingOTR;
+			productReference = B625724F1D0709A900978F5D /* libFlamingOTR.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		B671E8731D0866CB000F23D5 /* Flamingo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B671E8821D0866CB000F23D5 /* Build configuration list for PBXNativeTarget "Flamingo" */;
+			buildPhases = (
+				B671E8701D0866CB000F23D5 /* Sources */,
+				B671E8711D0866CB000F23D5 /* Frameworks */,
+				B671E8721D0866CB000F23D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Flamingo;
+			productName = Flamingo;
+			productReference = B671E8741D0866CB000F23D5 /* Flamingo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B62572471D0709A900978F5D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Taiki;
+				TargetAttributes = {
+					B625724E1D0709A900978F5D = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					B671E8731D0866CB000F23D5 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = GNHH4Q9D6U;
+					};
+				};
+			};
+			buildConfigurationList = B625724A1D0709A900978F5D /* Build configuration list for PBXProject "FlamingOTR" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B62572461D0709A900978F5D;
+			productRefGroup = B62572501D0709A900978F5D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B625724E1D0709A900978F5D /* FlamingOTR */,
+				B671E8731D0866CB000F23D5 /* Flamingo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B671E8721D0866CB000F23D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B671E8891D086801000F23D5 /* Images.xcassets in Resources */,
+				B671E88F1D086C52000F23D5 /* libFlamingOTR.dylib in Resources */,
+				B671E88E1D086B46000F23D5 /* Flamingo.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B625724B1D0709A900978F5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B62572551D0709A900978F5D /* FlamingOTR.m in Sources */,
+				B625725C1D0710EE00978F5D /* hooker.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B671E8701D0866CB000F23D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B671E8851D0866EA000F23D5 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B62572561D0709A900978F5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B62572571D0709A900978F5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B62572591D0709A900978F5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FlamingOTR/FlamingOTR.pch;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B625725A1D0709A900978F5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FlamingOTR/FlamingOTR.pch;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B671E8831D0866CB000F23D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Flamingo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = us.taiki.Flamingo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B671E8841D0866CB000F23D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Flamingo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = us.taiki.Flamingo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B625724A1D0709A900978F5D /* Build configuration list for PBXProject "FlamingOTR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B62572561D0709A900978F5D /* Debug */,
+				B62572571D0709A900978F5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B62572581D0709A900978F5D /* Build configuration list for PBXNativeTarget "FlamingOTR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B62572591D0709A900978F5D /* Debug */,
+				B625725A1D0709A900978F5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B671E8821D0866CB000F23D5 /* Build configuration list for PBXNativeTarget "Flamingo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B671E8831D0866CB000F23D5 /* Debug */,
+				B671E8841D0866CB000F23D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B62572471D0709A900978F5D /* Project object */;
+}
