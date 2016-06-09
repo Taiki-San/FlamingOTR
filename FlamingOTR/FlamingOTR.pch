@@ -9,8 +9,12 @@
 #ifndef FlamingOTR_pch
 #define FlamingOTR_pch
 
-#import <Foundation/Foundation.h>
-#import <Cocoa/Cocoa.h>
+#ifdef __OBJC__
+
+	#import <Foundation/Foundation.h>
+	#import <Cocoa/Cocoa.h>
+
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>

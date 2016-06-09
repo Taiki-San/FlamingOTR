@@ -7,8 +7,16 @@
 //
 
 static void __attribute__((constructor)) initialize(void);
+static void __attribute__((destructor)) cleanup(void);
 
 void initialize()
 {
 	NSLog(@"Initialized!");
 }
+
+void cleanup()
+{
+	NSLog(@"Exiting nicely");
+}
+
+

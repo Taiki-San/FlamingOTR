@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 	{
 		unsigned long length = strlen(path);
 		
-		//We are expecting a path looking like /xxx/Contents/MacOS/flamingOTR_bootstrap
+		//We are expecting a path looking like /xxx/Contents/MacOS/Flamingo
 		//We want to remove everything after Contents so we can link to the dylib and the embed binary
 		
 		//Trim the name of the binary from the path
