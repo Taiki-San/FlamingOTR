@@ -10,4 +10,7 @@
 
 @interface FlamingOTR : NSObject
 
++ (void) swizzleClass : (Class) class originalMethod : (SEL) originalSelector withMethod : (SEL) swizzledSelector;
++ (void) addSelector : (SEL) selector ofClass : (Class) originalClass toClass : (Class) targetClass;
+
 @end

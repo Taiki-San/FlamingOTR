@@ -14,6 +14,9 @@
 	#import <Foundation/Foundation.h>
 	#import <Cocoa/Cocoa.h>
 
+	#import "FlamingOTR.h"
+	#import "FlamingHook.h"
+
 #endif
 
 #include <stdio.h>

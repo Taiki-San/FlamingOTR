@@ -14,7 +14,19 @@
 		B671E8891D086801000F23D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B671E8881D086801000F23D5 /* Images.xcassets */; };
 		B671E88E1D086B46000F23D5 /* Flamingo.app in Resources */ = {isa = PBXBuildFile; fileRef = B671E88D1D086B46000F23D5 /* Flamingo.app */; };
 		B671E88F1D086C52000F23D5 /* libFlamingOTR.dylib in Resources */ = {isa = PBXBuildFile; fileRef = B625724F1D0709A900978F5D /* libFlamingOTR.dylib */; };
+		B6FA42071D0AD15900BDD9BB /* FlamingHook.h in Headers */ = {isa = PBXBuildFile; fileRef = B6FA42051D0AD15900BDD9BB /* FlamingHook.h */; };
+		B6FA42081D0AD15900BDD9BB /* FlamingHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FA42061D0AD15900BDD9BB /* FlamingHook.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B65D1F731D09CC94000883F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B62572471D0709A900978F5D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B625724E1D0709A900978F5D;
+			remoteInfo = FlamingOTR;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B625724F1D0709A900978F5D /* libFlamingOTR.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libFlamingOTR.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,6 +39,8 @@
 		B671E8811D0866CB000F23D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B671E8881D086801000F23D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B671E88D1D086B46000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Flamingo.app; sourceTree = "<group>"; };
+		B6FA42051D0AD15900BDD9BB /* FlamingHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlamingHook.h; sourceTree = "<group>"; };
+		B6FA42061D0AD15900BDD9BB /* FlamingHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlamingHook.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +84,8 @@
 			children = (
 				B62572521D0709A900978F5D /* FlamingOTR.h */,
 				B62572541D0709A900978F5D /* FlamingOTR.m */,
+				B6FA42051D0AD15900BDD9BB /* FlamingHook.h */,
+				B6FA42061D0AD15900BDD9BB /* FlamingHook.m */,
 				B625725B1D0710EE00978F5D /* hooker.m */,
 				B625725D1D0710FF00978F5D /* FlamingOTR.pch */,
 			);
@@ -102,6 +118,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6FA42071D0AD15900BDD9BB /* FlamingHook.h in Headers */,
 				B62572531D0709A900978F5D /* FlamingOTR.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +154,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B65D1F741D09CC94000883F2 /* PBXTargetDependency */,
 			);
 			name = Flamingo;
 			productName = Flamingo;
@@ -200,6 +218,7 @@
 			files = (
 				B62572551D0709A900978F5D /* FlamingOTR.m in Sources */,
 				B625725C1D0710EE00978F5D /* hooker.m in Sources */,
+				B6FA42081D0AD15900BDD9BB /* FlamingHook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +231,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B65D1F741D09CC94000883F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B625724E1D0709A900978F5D /* FlamingOTR */;
+			targetProxy = B65D1F731D09CC94000883F2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B62572561D0709A900978F5D /* Debug */ = {
