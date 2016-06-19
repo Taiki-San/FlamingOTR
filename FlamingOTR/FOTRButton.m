@@ -123,7 +123,10 @@
 {
 	if(self.coreListener != nil)
 	{
-		[self.coreListener needActivateOTRForConversation:_controller];
+		if(self.locked)
+			[self.coreListener needDisableOTRForConversation:_controller fromButton:self];
+		else
+			[self.coreListener needActivateOTRForConversation:_controller fromButton:self];
 	}
 }
 

@@ -53,7 +53,7 @@ void initialize()
 	if(primaryViewController != nil)
 	{
 		[FlamingOTR swizzleClass:primaryViewController
-				  originalMethod:NSSelectorFromString(@"loadView")
+				  originalMethod:@selector(loadView)
 					  withMethod:@selector(fgochatviewcontroller_loadView)
 					   fromClass:[FlamingHook class]];
 	}

@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FlamingOTR : NSObject
+@interface FlamingOTR : NSObject <OTRHub>
+
++ (instancetype) getShared;
+
+- (void) initiateOTRSession : (FGOChatViewController *) controller;
+- (void) killOTRSession : (FGOChatViewController *) controller;
+- (BOOL) getOTRSessionStatus : (FGOChatViewController *) controller;
 
 + (void) swizzleClass : (Class) class originalMethod : (SEL) originalSelector withMethod : (SEL) swizzledSelector;
 + (void) swizzleClass : (Class) class originalMethod : (SEL) originalSelector withMethod : (SEL) swizzledSelector fromClass : (Class) injectionClass;

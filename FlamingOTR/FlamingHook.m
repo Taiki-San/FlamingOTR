@@ -57,9 +57,12 @@
 	//We insert the OTR control button
 	FGOChatViewController * controller = (id) self;
 	
-	FOTRButton * button = [[FOTRButton alloc] initButton];
+	FOTRButton * button = [[FOTRButton alloc] initButtonWithController:controller];
 	if(button != nil)
+	{
+		button.coreListener = [FlamingOTR getShared];
 		[controller.titleBarView addSubview:button];		//The button position is auto set as it already has to handle the container frame changes
+	}
 }
 
 @end
