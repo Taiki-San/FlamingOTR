@@ -48,4 +48,18 @@
 	return self;
 }
 
+//Hook FGOChatViewController
+
+- (void) fgochatviewcontroller_loadView
+{
+	[self fgochatviewcontroller_loadView];
+	
+	//We insert the OTR control button
+	FGOChatViewController * controller = (id) self;
+	
+	FOTRButton * button = [[FOTRButton alloc] initButton];
+	if(button != nil)
+		[controller.titleBarView addSubview:button];		//The button position is auto set as it already has to handle the container frame changes
+}
+
 @end

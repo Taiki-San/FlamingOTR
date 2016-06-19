@@ -48,6 +48,24 @@ void initialize()
 	{
 		NSLog(@"Couldn't inject into FGOConversationViewController. Class not found");
 	}
+	
+	primaryViewController = objc_getClass("FGOChatViewController");
+	if(primaryViewController != nil)
+	{
+		[FlamingOTR swizzleClass:primaryViewController
+				  originalMethod:NSSelectorFromString(@"loadView")
+					  withMethod:@selector(fgochatviewcontroller_loadView)
+					   fromClass:[FlamingHook class]];
+	}
+	else
+	{
+		NSLog(@"Couldn't inject into FGOChatViewController. Class not found");
+	}
+}
+
+Class classWithName(const char * name)
+{
+	return objc_getClass(name);
 }
 
 void cleanup()

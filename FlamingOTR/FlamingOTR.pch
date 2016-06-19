@@ -9,6 +9,13 @@
 #ifndef FlamingOTR_pch
 #define FlamingOTR_pch
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+
+typedef uint8_t byte;
+
 #ifdef __OBJC__
 
 	@import Foundation;
@@ -34,14 +41,11 @@
 
 	#include "Flamingo.h"
 
+	#import "FOTRButton.h"
+
 	#import "FlamingOTR.h"
 	#import "FlamingHook.h"
 
 #endif
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
 
 #endif /* FlamingOTR_pch */
