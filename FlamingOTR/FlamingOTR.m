@@ -14,22 +14,27 @@
 
 + (void) swizzleClass : (Class) class originalMethod : (SEL) originalSelector withMethod : (SEL) swizzledSelector
 {
+	[self swizzleClass:class originalMethod:originalSelector withMethod:swizzledSelector fromClass:class];
+}
+
++ (void) swizzleClass : (Class) class originalMethod : (SEL) originalSelector withMethod : (SEL) swizzledSelector fromClass : (Class) injectionClass
+{
 	Method originalMethod = class_getInstanceMethod(class, originalSelector);
-	Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+	Method swizzledMethod = class_getInstanceMethod(injectionClass, swizzledSelector);
 	
 	if(originalMethod != NULL && swizzledMethod != NULL)
 	{
 		BOOL didAddMethod = class_addMethod(class,
-											originalSelector,
-											method_getImplementation(swizzledMethod),
-											method_getTypeEncoding(swizzledMethod));
+											swizzledSelector,
+											method_getImplementation(originalMethod),
+											method_getTypeEncoding(originalMethod));
 		
 		if (didAddMethod)
 		{
 			class_replaceMethod(class,
-								swizzledSelector,
-								method_getImplementation(originalMethod),
-								method_getTypeEncoding(originalMethod));
+								originalSelector,
+								method_getImplementation(swizzledMethod),
+								method_getTypeEncoding(swizzledMethod));
 		}
 		else
 		{
@@ -39,7 +44,7 @@
 	else
 	{
 		if(originalMethod != NULL)
-			NSLog(@"Couldn't find %@ in %@", NSStringFromSelector(swizzledSelector), NSStringFromClass(class));
+			NSLog(@"Couldn't find %@ in %@", NSStringFromSelector(swizzledSelector), NSStringFromClass(injectionClass));
 
 		else if(swizzledMethod != NULL)
 			NSLog(@"Couldn't find %@ in %@", NSStringFromSelector(originalSelector), NSStringFromClass(class));

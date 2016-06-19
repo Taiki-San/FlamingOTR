@@ -20,7 +20,33 @@ void initialize()
 	}
 	else
 	{
-		NSLog(@"Couldn't inject into %@. Class not found", coreClass);
+		NSLog(@"Couldn't inject into FGOAppDelegate. Class not found");
+	}
+	
+	Class primaryViewController = objc_getClass("FGOChatListViewController");
+	if(primaryViewController != nil)
+	{
+		[FlamingOTR swizzleClass:primaryViewController
+				  originalMethod:NSSelectorFromString(@"loadView")
+					  withMethod:@selector(fakeNewConversation)
+					   fromClass:[FlamingHook class]];
+	}
+	else
+	{
+		NSLog(@"Couldn't inject into FGOChatListViewController. Class not found");
+	}
+	
+	primaryViewController = objc_getClass("FGOConversationViewController");
+	if(primaryViewController != nil)
+	{
+		[FlamingOTR swizzleClass:primaryViewController
+				  originalMethod:NSSelectorFromString(@"initWithConversation:chatListViewController:")
+					  withMethod:@selector(initConversation:chatListViewController:)
+					   fromClass:[FlamingHook class]];
+	}
+	else
+	{
+		NSLog(@"Couldn't inject into FGOConversationViewController. Class not found");
 	}
 }
 

@@ -10,4 +10,9 @@
 
 @interface FlamingHook : NSObject
 
++ (void) HEYLOOKATME : (NSString *) heyListen;
+
+- (void) fakeNewConversation;
+- (id) initConversation : (id) arg1 chatListViewController : (id) arg2;
+
 @end
