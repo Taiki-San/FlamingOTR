@@ -28,7 +28,7 @@ void initialize()
 	{
 		[FlamingOTR swizzleClass:primaryViewController
 				  originalMethod:NSSelectorFromString(@"loadView")
-					  withMethod:@selector(fakeNewConversation)
+					  withMethod:@selector(FGOChatListViewController_loadView)
 					   fromClass:[FlamingHook class]];
 	}
 	else
@@ -41,7 +41,7 @@ void initialize()
 	{
 		[FlamingOTR swizzleClass:primaryViewController
 				  originalMethod:NSSelectorFromString(@"initWithConversation:chatListViewController:")
-					  withMethod:@selector(initConversation:chatListViewController:)
+					  withMethod:@selector(initFGOConversationViewController:chatListViewController:)
 					   fromClass:[FlamingHook class]];
 	}
 	else

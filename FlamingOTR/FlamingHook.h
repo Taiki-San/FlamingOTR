@@ -6,13 +6,15 @@
 //  Copyright © 2016 Taiki. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+Class classWithName(const char * name);
 
 @interface FlamingHook : NSObject
 
 + (void) HEYLOOKATME : (NSString *) heyListen;
 
-- (void) fakeNewConversation;
-- (id) initConversation : (id) arg1 chatListViewController : (id) arg2;
+- (void) FGOChatListViewController_loadView;
+- (id) initFGOConversationViewController : (id) arg1 chatListViewController : (id) arg2;
+
+- (void) fgochatviewcontroller_loadView;
 
 @end
