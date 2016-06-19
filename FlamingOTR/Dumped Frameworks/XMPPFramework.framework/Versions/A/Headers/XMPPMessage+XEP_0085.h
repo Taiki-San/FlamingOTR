@@ -1,0 +1,22 @@
+#import <Foundation/Foundation.h>
+#import "XMPPMessage.h"
+
+extern NSString* const XMLNSJabberChatStates;
+
+@interface XMPPMessage (XEP_0085)
+
+- (BOOL)hasChatState;
+
+- (BOOL)isActiveChatState;
+- (BOOL)isComposingChatState;
+- (BOOL)isPausedChatState;
+- (BOOL)isInactiveChatState;
+- (BOOL)isGoneChatState;
+
+- (void)addActiveChatState;
+- (void)addComposingChatState;
+- (void)addPausedChatState;
+- (void)addInactiveChatState;
+- (void)addGoneChatState;
+
+@end

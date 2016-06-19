@@ -14,6 +14,7 @@
 		B671E8891D086801000F23D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B671E8881D086801000F23D5 /* Images.xcassets */; };
 		B671E88E1D086B46000F23D5 /* Flamingo.app in Resources */ = {isa = PBXBuildFile; fileRef = B671E88D1D086B46000F23D5 /* Flamingo.app */; };
 		B671E88F1D086C52000F23D5 /* libFlamingOTR.dylib in Resources */ = {isa = PBXBuildFile; fileRef = B625724F1D0709A900978F5D /* libFlamingOTR.dylib */; };
+		B6782C361D16A0AC007F1573 /* Flamingo.h in Headers */ = {isa = PBXBuildFile; fileRef = B6782C351D16A0AC007F1573 /* Flamingo.h */; };
 		B6FA42071D0AD15900BDD9BB /* FlamingHook.h in Headers */ = {isa = PBXBuildFile; fileRef = B6FA42051D0AD15900BDD9BB /* FlamingHook.h */; };
 		B6FA42081D0AD15900BDD9BB /* FlamingHook.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FA42061D0AD15900BDD9BB /* FlamingHook.m */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,17 @@
 		B671E8811D0866CB000F23D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B671E8881D086801000F23D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B671E88D1D086B46000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Flamingo.app; sourceTree = "<group>"; };
+		B6782C351D16A0AC007F1573 /* Flamingo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flamingo.h; sourceTree = "<group>"; };
+		B6782C371D16A299007F1573 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "FlamingOTR/Dumped Frameworks/AFNetworking.framework"; sourceTree = "<group>"; };
+		B6782C381D16A299007F1573 /* Archimedes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Archimedes.framework; path = "FlamingOTR/Dumped Frameworks/Archimedes.framework"; sourceTree = "<group>"; };
+		B6782C391D16A299007F1573 /* Ashton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ashton.framework; path = "FlamingOTR/Dumped Frameworks/Ashton.framework"; sourceTree = "<group>"; };
+		B6782C3A1D16A299007F1573 /* Butter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Butter.framework; path = "FlamingOTR/Dumped Frameworks/Butter.framework"; sourceTree = "<group>"; };
+		B6782C3B1D16A299007F1573 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "FlamingOTR/Dumped Frameworks/HockeySDK.framework"; sourceTree = "<group>"; };
+		B6782C3C1D16A299007F1573 /* INDockableWindow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INDockableWindow.framework; path = "FlamingOTR/Dumped Frameworks/INDockableWindow.framework"; sourceTree = "<group>"; };
+		B6782C3D1D16A299007F1573 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = "FlamingOTR/Dumped Frameworks/Mantle.framework"; sourceTree = "<group>"; };
+		B6782C3E1D16A299007F1573 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = "FlamingOTR/Dumped Frameworks/ReactiveCocoa.framework"; sourceTree = "<group>"; };
+		B6782C3F1D16A299007F1573 /* ReactiveCocoaLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoaLayout.framework; path = "FlamingOTR/Dumped Frameworks/ReactiveCocoaLayout.framework"; sourceTree = "<group>"; };
+		B6782C401D16A299007F1573 /* XMPPFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFramework.framework; path = "FlamingOTR/Dumped Frameworks/XMPPFramework.framework"; sourceTree = "<group>"; };
 		B6FA42051D0AD15900BDD9BB /* FlamingHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlamingHook.h; sourceTree = "<group>"; };
 		B6FA42061D0AD15900BDD9BB /* FlamingHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlamingHook.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +76,7 @@
 		B62572461D0709A900978F5D = {
 			isa = PBXGroup;
 			children = (
+				B6782C4B1D16A29F007F1573 /* Flamingo Frameworks */,
 				B62572511D0709A900978F5D /* FlamingOTR */,
 				B671E8751D0866CB000F23D5 /* Flamingo */,
 				B62572501D0709A900978F5D /* Products */,
@@ -86,6 +99,7 @@
 				B62572541D0709A900978F5D /* FlamingOTR.m */,
 				B6FA42051D0AD15900BDD9BB /* FlamingHook.h */,
 				B6FA42061D0AD15900BDD9BB /* FlamingHook.m */,
+				B6782C351D16A0AC007F1573 /* Flamingo.h */,
 				B625725B1D0710EE00978F5D /* hooker.m */,
 				B625725D1D0710FF00978F5D /* FlamingOTR.pch */,
 			);
@@ -111,6 +125,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B6782C4B1D16A29F007F1573 /* Flamingo Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6782C371D16A299007F1573 /* AFNetworking.framework */,
+				B6782C381D16A299007F1573 /* Archimedes.framework */,
+				B6782C391D16A299007F1573 /* Ashton.framework */,
+				B6782C3A1D16A299007F1573 /* Butter.framework */,
+				B6782C3B1D16A299007F1573 /* HockeySDK.framework */,
+				B6782C3C1D16A299007F1573 /* INDockableWindow.framework */,
+				B6782C3D1D16A299007F1573 /* Mantle.framework */,
+				B6782C3E1D16A299007F1573 /* ReactiveCocoa.framework */,
+				B6782C3F1D16A299007F1573 /* ReactiveCocoaLayout.framework */,
+				B6782C401D16A299007F1573 /* XMPPFramework.framework */,
+			);
+			name = "Flamingo Frameworks";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -120,6 +151,7 @@
 			files = (
 				B6FA42071D0AD15900BDD9BB /* FlamingHook.h in Headers */,
 				B62572531D0709A900978F5D /* FlamingOTR.h in Headers */,
+				B6782C361D16A0AC007F1573 /* Flamingo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +199,7 @@
 		B62572471D0709A900978F5D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Taiki;
 				TargetAttributes = {
 					B625724E1D0709A900978F5D = {
@@ -175,7 +207,9 @@
 					};
 					B671E8731D0866CB000F23D5 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = GNHH4Q9D6U;
+						DevelopmentTeam = MJ9ZWUG4BD;
+						DevelopmentTeamName = "SPIR Emile-Hugo (Personal Team)";
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -338,14 +372,18 @@
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlamingOTR/Dumped\\ Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlamingOTR/FlamingOTR.pch;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
@@ -356,6 +394,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FlamingOTR/Dumped\\ Frameworks";
 			};
 			name = Debug;
 		};
@@ -375,14 +414,19 @@
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlamingOTR/Dumped\\ Frameworks",
+				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlamingOTR/FlamingOTR.pch;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
@@ -393,6 +437,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FlamingOTR/Dumped\\ Frameworks";
 			};
 			name = Release;
 		};
@@ -400,7 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlamingOTR/FlamingOTR.pch;
@@ -415,7 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlamingOTR/FlamingOTR.pch;

@@ -11,8 +11,28 @@
 
 #ifdef __OBJC__
 
-	#import <Foundation/Foundation.h>
-	#import <Cocoa/Cocoa.h>
+	@import Foundation;
+	@import Cocoa;
+	@import AddressBook;
+	@import Accounts;
+	@import AVFoundation;
+	@import QuartzCore;
+	@import WebKit;
+	@import Social;
+
+	#import <AFNetworking/AFNetworking.h>
+	#import <Archimedes/Archimedes.h>
+	#import <Ashton/Ashton.h>
+	#import <Butter/Butter.h>
+	#import <HockeySDK/HockeySDK.h>
+	#import <INDockableWindow/INDockableWindow.h>
+	#import <INDockableWindow/INDockableWindowController.h>
+	#import <Mantle/Mantle.h>
+	#import <ReactiveCocoa/ReactiveCocoa.h>
+	#import <ReactiveCocoaLayout/ReactiveCocoaLayout.h>
+	#import <XMPPFramework/XMPPFramework.h>
+
+	#include "Flamingo.h"
 
 	#import "FlamingOTR.h"
 	#import "FlamingHook.h"
