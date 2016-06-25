@@ -25,6 +25,38 @@ void initialize()
 	{
 		NSLog(@"Couldn't inject into FGOChatViewController. Class not found");
 	}
+
+	//Hook the network interface
+	classHandle = objc_getClass("FGOIMServiceConnection");
+	if(classHandle != nil)
+	{
+		[FlamingOTR swizzleClass:classHandle
+				  originalMethod:@selector(sendMessage:fromAccount:)
+					  withMethod:@selector(fgoIMServiceConnection_sendMessage:fromAccount:)
+					   fromClass:[FlamingHook class]];
+		
+		[FlamingOTR swizzleClass:classHandle
+				  originalMethod:@selector(client:didReceiveMessage:)
+					  withMethod:@selector(fgoIMServiceConnection_client:didReceiveMessage:)
+					   fromClass:[FlamingHook class]];
+	}
+	else
+	{
+		NSLog(@"Couldn't inject into FGOIMServiceConnection. Class not found");
+	}
+	
+	classHandle = objc_getClass("BITHockeyManager");
+	if(classHandle != nil)
+	{
+		[FlamingOTR swizzleClass:classHandle
+				  originalMethod:@selector(sharedHockeyManager)
+					  withMethod:@selector(nukeHockeyManager)
+					   fromClass:[FlamingHook class]];
+	}
+	else
+	{
+		NSLog(@"Couldn't inject into BITHockeyManager. Class not found");
+	}
 }
 
 Class classWithName(const char * name)

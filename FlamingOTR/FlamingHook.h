@@ -12,4 +12,9 @@ Class classWithName(const char * name);
 
 - (void) fgochatviewcontroller_loadView;
 
+- (id) fgoIMServiceConnection_sendMessage:(id)arg1 fromAccount:(id)arg2;
+- (void)fgoIMServiceConnection_client:(id)arg1 didReceiveMessage:(id)arg2;
+
+- (id) nukeHockeyManager;
+
 @end
