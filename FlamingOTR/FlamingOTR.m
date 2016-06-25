@@ -9,6 +9,8 @@
 #include <objc/runtime.h>
 #include <pthread/pthread.h>
 
+#include "libotr/version.h"
+
 static FlamingOTR * singleton = nil;
 
 @interface FlamingOTR ()
