@@ -16,7 +16,7 @@ void initialize()
 	Class classHandle = objc_getClass("FGOChatViewController");
 	if(classHandle != nil)
 	{
-		[FlamingOTR swizzleClass:classHandle
+		[FlamingHook swizzleClass:classHandle
 				  originalMethod:@selector(loadView)
 					  withMethod:@selector(fgochatviewcontroller_loadView)
 					   fromClass:[FlamingHook class]];
@@ -30,12 +30,12 @@ void initialize()
 	classHandle = objc_getClass("FGOIMServiceConnection");
 	if(classHandle != nil)
 	{
-		[FlamingOTR swizzleClass:classHandle
+		[FlamingHook swizzleClass:classHandle
 				  originalMethod:@selector(sendMessage:fromAccount:)
 					  withMethod:@selector(fgoIMServiceConnection_sendMessage:fromAccount:)
 					   fromClass:[FlamingHook class]];
 		
-		[FlamingOTR swizzleClass:classHandle
+		[FlamingHook swizzleClass:classHandle
 				  originalMethod:@selector(client:didReceiveMessage:)
 					  withMethod:@selector(fgoIMServiceConnection_client:didReceiveMessage:)
 					   fromClass:[FlamingHook class]];
@@ -48,7 +48,7 @@ void initialize()
 	classHandle = objc_getClass("BITHockeyManager");
 	if(classHandle != nil)
 	{
-		[FlamingOTR swizzleClass:classHandle
+		[FlamingHook swizzleClass:classHandle
 				  originalMethod:@selector(sharedHockeyManager)
 					  withMethod:@selector(nukeHockeyManager)
 					   fromClass:[FlamingHook class]];

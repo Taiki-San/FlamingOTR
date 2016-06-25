@@ -11,6 +11,7 @@
 		B62572531D0709A900978F5D /* FlamingOTR.h in Headers */ = {isa = PBXBuildFile; fileRef = B62572521D0709A900978F5D /* FlamingOTR.h */; };
 		B62572551D0709A900978F5D /* FlamingOTR.m in Sources */ = {isa = PBXBuildFile; fileRef = B62572541D0709A900978F5D /* FlamingOTR.m */; };
 		B625725C1D0710EE00978F5D /* hooker.m in Sources */ = {isa = PBXBuildFile; fileRef = B625725B1D0710EE00978F5D /* hooker.m */; };
+		B636EDF81D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B636EDF71D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h */; };
 		B671E8851D0866EA000F23D5 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B671E86B1D08609A000F23D5 /* main.c */; };
 		B671E8891D086801000F23D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B671E8881D086801000F23D5 /* Images.xcassets */; };
 		B671E88E1D086B46000F23D5 /* Flamingo.app in Resources */ = {isa = PBXBuildFile; fileRef = B671E88D1D086B46000F23D5 /* Flamingo.app */; };
@@ -39,6 +40,7 @@
 		B62572541D0709A900978F5D /* FlamingOTR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlamingOTR.m; sourceTree = "<group>"; };
 		B625725B1D0710EE00978F5D /* hooker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hooker.m; sourceTree = "<group>"; };
 		B625725D1D0710FF00978F5D /* FlamingOTR.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlamingOTR.pch; sourceTree = "<group>"; };
+		B636EDF71D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlamingHook+Swizzle.h"; sourceTree = "<group>"; };
 		B671E86B1D08609A000F23D5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		B671E8741D0866CB000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B671E8811D0866CB000F23D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				B6F79D741D16C89800415AB1 /* Ressources */,
 				B62572521D0709A900978F5D /* FlamingOTR.h */,
 				B62572541D0709A900978F5D /* FlamingOTR.m */,
+				B636EDF71D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h */,
 				B6FA42051D0AD15900BDD9BB /* FlamingHook.h */,
 				B6FA42061D0AD15900BDD9BB /* FlamingHook.m */,
 				B6F79D751D16C94A00415AB1 /* FOTRButton.h */,
@@ -174,6 +177,7 @@
 				B6FA42071D0AD15900BDD9BB /* FlamingHook.h in Headers */,
 				B6F79D771D16C94A00415AB1 /* FOTRButton.h in Headers */,
 				B62572531D0709A900978F5D /* FlamingOTR.h in Headers */,
+				B636EDF81D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h in Headers */,
 				B6782C361D16A0AC007F1573 /* Flamingo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
