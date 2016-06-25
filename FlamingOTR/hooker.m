@@ -48,10 +48,14 @@ void initialize()
 	classHandle = objc_getClass("BITHockeyManager");
 	if(classHandle != nil)
 	{
-		[FlamingHook swizzleClass:classHandle
-				  originalMethod:@selector(sharedHockeyManager)
-					  withMethod:@selector(nukeHockeyManager)
-					   fromClass:[FlamingHook class]];
+		classHandle = object_getClass(classHandle);
+		if(classHandle != nil)
+		{
+			[FlamingHook swizzleClass:classHandle
+					   originalMethod:@selector(sharedHockeyManager)
+						   withMethod:@selector(nukeHockeyManager)
+							fromClass:[FlamingHook class]];
+		}
 	}
 	else
 	{

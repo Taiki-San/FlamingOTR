@@ -9,4 +9,6 @@
 #ifndef libotr_h
 #define libotr_h
 
+#include <proto.h>
+
 #endif /* libotr_h */

@@ -6,7 +6,6 @@
 //  Copyright © 2016 Taiki. All rights reserved.
 //
 
-#include <objc/runtime.h>
 #include <pthread/pthread.h>
 
 static FlamingOTR * singleton = nil;
