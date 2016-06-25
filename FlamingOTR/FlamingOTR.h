@@ -6,14 +6,23 @@
 //  Copyright © 2016 Taiki. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface FlamingOTR : NSObject <OTRHub>
+@interface FlamingOTR : NSObject
 
 + (instancetype) getShared;
 
 - (void) sendString : (NSString *) string toHandle : (FGORosterHandleName *) handle;
 - (void) writeString : (NSString *) string toHandle : (FGOChatViewController *) handle;
+
+- (NSNumber *) getNewTokenForConversation : (FGOChatViewController *) conversation;
+- (BOOL) isToken : (NSNumber *) token validForConversation : (FGOChatViewController *) conversation;
+
+@end
+
+@interface FlamingOTR (OTRHub) <OTRHub>
+
+@end
+
+@interface FlamingOTR (HighLibOTR)
 
 - (void) initiateOTRSession : (FGOChatViewController *) controller;
 - (void) killOTRSession : (FGOChatViewController *) controller;

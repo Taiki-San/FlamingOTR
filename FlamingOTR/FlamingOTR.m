@@ -9,8 +9,6 @@
 #include <objc/runtime.h>
 #include <pthread/pthread.h>
 
-#include "libotr/version.h"
-
 static FlamingOTR * singleton = nil;
 
 @interface FlamingOTR ()
@@ -88,76 +86,6 @@ static FlamingOTR * singleton = nil;
 	return output;
 }
 
-#pragma mark - Implement OTRHub
-
-- (void) needActivateOTRForConversation : (FGOChatViewController *) conversation fromButton : (FOTRButton *) button
-{
-	NSNumber * token = [self getNewTokenForConversation:conversation];
-	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		
-		[self initiateOTRSession:conversation];
-		
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			
-			if([self isToken:token validForConversation:conversation])
-				button.locked = [self getOTRSessionStatus:conversation];
-		});
-	});
-}
-
-- (void) needDisableOTRForConversation : (FGOChatViewController *) conversation fromButton : (FOTRButton *) button
-{
-	NSNumber * token = [self getNewTokenForConversation:conversation];
-	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		
-		[self killOTRSession:conversation];
-		
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			
-			if([self isToken:token validForConversation:conversation])
-				button.locked = [self getOTRSessionStatus:conversation];
-		});
-	});
-}
-
-- (void) needRefreshOTRForConversation : (FGOChatViewController *) conversation fromButton : (FOTRButton *) button
-{
-	NSNumber * token = [self getNewTokenForConversation:conversation];
-	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
-		//Interrupt potential session
-		if(button.locked == YES)
-			[self killOTRSession:conversation];
-		
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			
-			if([self isToken:token validForConversation:conversation])
-				button.locked = [self getOTRSessionStatus:conversation];
-		});
-		
-		[self initiateOTRSession:conversation];
-
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			
-			if([self isToken:token validForConversation:conversation])
-				button.locked = [self getOTRSessionStatus:conversation];
-		});
-	});
-}
-
-- (void) needValidateOTRForConversation : (FGOChatViewController *) conversation withOption : (byte) option
-{
-	
-}
-
-- (void) showDetailsOfOTRForConversation : (FGOChatViewController *) conversation
-{
-	
-}
-
 #pragma mark - Communication hub
 
 - (void) sendString : (NSString *) string toHandle : (FGORosterHandleName *) handle
@@ -186,25 +114,6 @@ static FlamingOTR * singleton = nil;
 		
 		[handle showMessages:@[handle.conversation.lastMessage]];
 	}
-}
-
-#pragma mark - Core OTR module
-
-- (void) initiateOTRSession : (FGOChatViewController *) controller
-{
-	[self writeString:@"olololololololol" toHandle:controller];
-	sleep(1);
-}
-
-- (void) killOTRSession : (FGOChatViewController *) controller
-{
-	sleep(1);
-}
-
-BOOL lol = NO;
-- (BOOL) getOTRSessionStatus : (FGOChatViewController *) controller
-{
-	return (lol = !lol);
 }
 
 @end

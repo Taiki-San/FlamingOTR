@@ -1,5 +1,5 @@
 //
-//  FlamingHook_FlamingHook_Swizzle.h
+//  FlamingHook+Swizzle.h
 //  FlamingOTR
 //
 //  Created by Taiki on 25/06/2016.

@@ -12,6 +12,8 @@
 		B62572551D0709A900978F5D /* FlamingOTR.m in Sources */ = {isa = PBXBuildFile; fileRef = B62572541D0709A900978F5D /* FlamingOTR.m */; };
 		B625725C1D0710EE00978F5D /* hooker.m in Sources */ = {isa = PBXBuildFile; fileRef = B625725B1D0710EE00978F5D /* hooker.m */; };
 		B636EDF81D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B636EDF71D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h */; };
+		B636EDFA1D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m in Sources */ = {isa = PBXBuildFile; fileRef = B636EDF91D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m */; };
+		B636EDFC1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m in Sources */ = {isa = PBXBuildFile; fileRef = B636EDFB1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m */; };
 		B671E8851D0866EA000F23D5 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B671E86B1D08609A000F23D5 /* main.c */; };
 		B671E8891D086801000F23D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B671E8881D086801000F23D5 /* Images.xcassets */; };
 		B671E88E1D086B46000F23D5 /* Flamingo.app in Resources */ = {isa = PBXBuildFile; fileRef = B671E88D1D086B46000F23D5 /* Flamingo.app */; };
@@ -41,6 +43,9 @@
 		B625725B1D0710EE00978F5D /* hooker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hooker.m; sourceTree = "<group>"; };
 		B625725D1D0710FF00978F5D /* FlamingOTR.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlamingOTR.pch; sourceTree = "<group>"; };
 		B636EDF71D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlamingHook+Swizzle.h"; sourceTree = "<group>"; };
+		B636EDF91D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FlamingOTR+OTRHub.m"; sourceTree = "<group>"; };
+		B636EDFB1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FlamingOTR+HighLibOTR.m"; sourceTree = "<group>"; };
+		B636EDFD1D1EF0D600BC4B5D /* libotr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libotr.h; sourceTree = "<group>"; };
 		B671E86B1D08609A000F23D5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		B671E8741D0866CB000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B671E8811D0866CB000F23D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,20 +111,47 @@
 		B62572511D0709A900978F5D /* FlamingOTR */ = {
 			isa = PBXGroup;
 			children = (
-				B60E794B1D1EEA6E00232774 /* libotr.a */,
-				B6F79D741D16C89800415AB1 /* Ressources */,
-				B62572521D0709A900978F5D /* FlamingOTR.h */,
-				B62572541D0709A900978F5D /* FlamingOTR.m */,
-				B636EDF71D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h */,
-				B6FA42051D0AD15900BDD9BB /* FlamingHook.h */,
-				B6FA42061D0AD15900BDD9BB /* FlamingHook.m */,
-				B6F79D751D16C94A00415AB1 /* FOTRButton.h */,
-				B6F79D761D16C94A00415AB1 /* FOTRButton.m */,
 				B6782C351D16A0AC007F1573 /* Flamingo.h */,
-				B625725B1D0710EE00978F5D /* hooker.m */,
-				B625725D1D0710FF00978F5D /* FlamingOTR.pch */,
+				B636EDFE1D1EF10E00BC4B5D /* Hooker */,
+				B60E794B1D1EEA6E00232774 /* libotr.a */,
+				B636EE001D1EF12200BC4B5D /* OTR */,
+				B6F79D741D16C89800415AB1 /* Ressources */,
+				B636EDFF1D1EF11700BC4B5D /* UI */,
 			);
 			path = FlamingOTR;
+			sourceTree = "<group>";
+		};
+		B636EDFE1D1EF10E00BC4B5D /* Hooker */ = {
+			isa = PBXGroup;
+			children = (
+				B625725B1D0710EE00978F5D /* hooker.m */,
+				B6FA42051D0AD15900BDD9BB /* FlamingHook.h */,
+				B6FA42061D0AD15900BDD9BB /* FlamingHook.m */,
+				B636EDF71D1EEC1D00BC4B5D /* FlamingHook+Swizzle.h */,
+			);
+			name = Hooker;
+			sourceTree = "<group>";
+		};
+		B636EDFF1D1EF11700BC4B5D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B6F79D751D16C94A00415AB1 /* FOTRButton.h */,
+				B6F79D761D16C94A00415AB1 /* FOTRButton.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		B636EE001D1EF12200BC4B5D /* OTR */ = {
+			isa = PBXGroup;
+			children = (
+				B62572521D0709A900978F5D /* FlamingOTR.h */,
+				B62572541D0709A900978F5D /* FlamingOTR.m */,
+				B625725D1D0710FF00978F5D /* FlamingOTR.pch */,
+				B636EDFB1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m */,
+				B636EDF91D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m */,
+				B636EDFD1D1EF0D600BC4B5D /* libotr.h */,
+			);
+			name = OTR;
 			sourceTree = "<group>";
 		};
 		B671E8751D0866CB000F23D5 /* Flamingo */ = {
@@ -277,9 +309,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B636EDFA1D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m in Sources */,
 				B62572551D0709A900978F5D /* FlamingOTR.m in Sources */,
 				B625725C1D0710EE00978F5D /* hooker.m in Sources */,
 				B6F79D781D16C94A00415AB1 /* FOTRButton.m in Sources */,
+				B636EDFC1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m in Sources */,
 				B6FA42081D0AD15900BDD9BB /* FlamingHook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
