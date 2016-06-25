@@ -48,4 +48,6 @@ typedef uint8_t byte;
 
 #endif
 
+#define FLAMINGOTR_VERSION "1.0"
+
 #endif /* FlamingOTR_pch */

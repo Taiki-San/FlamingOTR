@@ -7,6 +7,9 @@
 //
 
 @interface FlamingOTR : NSObject
+{
+	BOOL initialized;
+}
 
 + (instancetype) getShared;
 
