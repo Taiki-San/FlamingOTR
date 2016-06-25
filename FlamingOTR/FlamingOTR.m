@@ -156,15 +156,41 @@ static FlamingOTR * singleton = nil;
 	
 }
 
+#pragma mark - Communication hub
+
+- (void) sendString : (NSString *) string toHandle : (FGORosterHandleName *) handle
+{
+	[[classWithName("FGOIMServiceConnection") sharedInstance] sendMessage:[classWithName("FGOIMServiceMessage")
+																		   messageWithBody:string
+																		   toHandleWithName:handle.name
+																		   withState:0]
+															  fromAccount:handle.account];
+}
+
+- (void) writeString : (NSString *) string toHandle : (FGOChatViewController *) handle
+{
+	if (![NSThread isMainThread])
+	{
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			[self writeString:string toHandle:handle];
+		});
+	}
+	else
+	{
+		[handle.conversation insertChatMessageWithEntityName:@"FGOChatMessage"
+													  string:string
+														sent:YES
+												  handleName:handle.handleName];
+		
+		[handle showMessages:@[handle.conversation.lastMessage]];
+	}
+}
+
 #pragma mark - Core OTR module
 
 - (void) initiateOTRSession : (FGOChatViewController *) controller
 {
-	[[classWithName("FGOIMServiceConnection") sharedInstance] sendMessage:[classWithName("FGOIMServiceMessage")
-																		   messageWithBody:@"lololololol"
-																		   toHandleWithName:controller.handleName.name
-																		   withState:0]
-															  fromAccount:controller.handleName.account];
+	[self writeString:@"olololololololol" toHandle:controller];
 	sleep(1);
 }
 
