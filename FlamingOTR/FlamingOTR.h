@@ -11,13 +11,13 @@
 	BOOL initialized;
 }
 
-+ (instancetype) getShared;
++ (nonnull instancetype) getShared;
 
-- (void) sendString : (NSString *) string toHandle : (FGORosterHandleName *) handle;
-- (void) writeString : (NSString *) string toHandle : (FGOChatViewController *) handle;
+- (void) sendString : (nonnull NSString *) string toHandle : (nonnull FGORosterHandleName *) handle;
+- (void) writeString : (nonnull NSString *) string toHandle : (nonnull FGOChatViewController *) handle;
 
-- (NSNumber *) getNewTokenForConversation : (FGOChatViewController *) conversation;
-- (BOOL) isToken : (NSNumber *) token validForConversation : (FGOChatViewController *) conversation;
+- (nonnull NSNumber *) getNewTokenForConversation : (nonnull FGOChatViewController *) conversation;
+- (BOOL) isToken : (nonnull NSNumber *) token validForConversation : (nonnull FGOChatViewController *) conversation;
 
 @end
 
@@ -27,8 +27,8 @@
 
 @interface FlamingOTR (HighLibOTR)
 
-- (void) initiateOTRSession : (FGOChatViewController *) controller;
-- (void) killOTRSession : (FGOChatViewController *) controller;
-- (BOOL) getOTRSessionStatus : (FGOChatViewController *) controller;
+- (void) initiateOTRSession : (nonnull FGOChatViewController *) controller;
+- (void) killOTRSession : (nonnull FGOChatViewController *) controller;
+- (BOOL) getOTRSessionStatus : (nonnull FGOChatViewController *) controller;
 
 @end

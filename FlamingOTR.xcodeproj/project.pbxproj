@@ -15,6 +15,7 @@
 		B636EDFC1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m in Sources */ = {isa = PBXBuildFile; fileRef = B636EDFB1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m */; };
 		B636EE041D1F00A400BC4B5D /* libgcrypt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B636EE031D1F00A400BC4B5D /* libgcrypt.a */; };
 		B636EE061D1F013800BC4B5D /* libgpg-error.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B636EE051D1F013800BC4B5D /* libgpg-error.a */; };
+		B65133E71D201AB600A73BFB /* FOTRUserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65133E61D201AB600A73BFB /* FOTRUserContext.swift */; };
 		B671E8851D0866EA000F23D5 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B671E86B1D08609A000F23D5 /* main.c */; };
 		B671E8891D086801000F23D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B671E8881D086801000F23D5 /* Images.xcassets */; };
 		B671E88E1D086B46000F23D5 /* Flamingo.app in Resources */ = {isa = PBXBuildFile; fileRef = B671E88D1D086B46000F23D5 /* Flamingo.app */; };
@@ -48,6 +49,8 @@
 		B636EDFD1D1EF0D600BC4B5D /* libotr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libotr.h; sourceTree = "<group>"; };
 		B636EE031D1F00A400BC4B5D /* libgcrypt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgcrypt.a; path = libotr/libgcrypt.a; sourceTree = SOURCE_ROOT; };
 		B636EE051D1F013800BC4B5D /* libgpg-error.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgpg-error.a"; path = "libotr/libgpg-error.a"; sourceTree = SOURCE_ROOT; };
+		B65133E51D201AB500A73BFB /* FlamingOTR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlamingOTR-Bridging-Header.h"; sourceTree = "<group>"; };
+		B65133E61D201AB600A73BFB /* FOTRUserContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FOTRUserContext.swift; sourceTree = "<group>"; };
 		B671E86B1D08609A000F23D5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		B671E8741D0866CB000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B671E8811D0866CB000F23D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,9 +155,11 @@
 			children = (
 				B62572521D0709A900978F5D /* FlamingOTR.h */,
 				B62572541D0709A900978F5D /* FlamingOTR.m */,
+				B65133E61D201AB600A73BFB /* FOTRUserContext.swift */,
 				B636EDFB1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m */,
 				B636EDF91D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m */,
 				B636EDFD1D1EF0D600BC4B5D /* libotr.h */,
+				B65133E51D201AB500A73BFB /* FlamingOTR-Bridging-Header.h */,
 			);
 			name = OTR;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				TargetAttributes = {
 					B625724E1D0709A900978F5D = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					B671E8731D0866CB000F23D5 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -319,6 +325,7 @@
 				B6F79D781D16C94A00415AB1 /* FOTRButton.m in Sources */,
 				B636EDFC1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m in Sources */,
 				B6FA42081D0AD15900BDD9BB /* FlamingHook.m in Sources */,
+				B65133E71D201AB600A73BFB /* FOTRUserContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +435,7 @@
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
@@ -458,11 +466,14 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libotr/**";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path../Frameworks @loader_path/../Frameworks /Applications/Xcode-beta.app/Contents/SharedFrameworks/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libotr",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlamingOTR/FlamingOTR-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FlamingOTR/Dumped\\ Frameworks";
 			};
 			name = Debug;
@@ -473,6 +484,7 @@
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
@@ -504,11 +516,14 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libotr/**";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path../Frameworks @loader_path/../Frameworks /Applications/Xcode-beta.app/Contents/SharedFrameworks/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libotr",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlamingOTR/FlamingOTR-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FlamingOTR/Dumped\\ Frameworks";
 			};
 			name = Release;
@@ -516,13 +531,14 @@
 		B671E8831D0866CB000F23D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlamingOTR/FlamingOTR.pch;
 				INFOPLIST_FILE = Flamingo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = us.taiki.Flamingo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -531,13 +547,14 @@
 		B671E8841D0866CB000F23D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlamingOTR/FlamingOTR.pch;
 				INFOPLIST_FILE = Flamingo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = us.taiki.Flamingo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

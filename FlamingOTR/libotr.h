@@ -10,5 +10,6 @@
 #define libotr_h
 
 #include <proto.h>
+#include <privkey.h>
 
 #endif /* libotr_h */
