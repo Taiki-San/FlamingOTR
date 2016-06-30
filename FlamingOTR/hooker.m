@@ -13,6 +13,7 @@ static void __attribute__((destructor)) cleanup(void);
 
 void initialize()
 {
+	//Hook the UI initialization to add the lock button
 	Class classHandle = objc_getClass("FGOChatViewController");
 	if(classHandle != nil)
 	{
@@ -45,9 +46,11 @@ void initialize()
 		NSLog(@"Couldn't inject into FGOIMServiceConnection. Class not found");
 	}
 	
+	//Kill the analytics framework not to interfer with the data during test and because I don't like snitches
 	classHandle = objc_getClass("BITHockeyManager");
 	if(classHandle != nil)
 	{
+		//Get the handle to swizzle class methods
 		classHandle = object_getClass(classHandle);
 		if(classHandle != nil)
 		{
@@ -55,6 +58,10 @@ void initialize()
 					   originalMethod:@selector(sharedHockeyManager)
 						   withMethod:@selector(nukeHockeyManager)
 							fromClass:[FlamingHook class]];
+		}
+		else
+		{
+			NSLog(@"Couldn't inject into BITHockeyManager. Class not found");
 		}
 	}
 	else
