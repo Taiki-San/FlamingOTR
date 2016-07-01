@@ -6,6 +6,10 @@
 //  Copyright © 2016 Taiki. All rights reserved.
 //
 
+@class UserContext;
+@class FlamingOTRAccount;
+@class FGOAccount;
+
 @interface FlamingOTR : NSObject
 {
 	BOOL initialized;
@@ -13,11 +17,14 @@
 
 + (nonnull instancetype) getShared;
 
-- (void) sendString : (nonnull NSString *) string toHandle : (nonnull FGORosterHandleName *) handle;
-- (void) writeString : (nonnull NSString *) string toHandle : (nonnull FGOChatViewController *) handle;
-
 - (nonnull NSNumber *) getNewTokenForConversation : (nonnull FGOChatViewController *) conversation;
 - (BOOL) isToken : (nonnull NSNumber *) token validForConversation : (nonnull FGOChatViewController *) conversation;
+
+- (nullable FlamingOTRAccount *) getContextForAccount : (nonnull FGOAccount *) account;
+- (nullable FlamingOTRAccount *) getContextForSignature : (nonnull NSString *) signature;
+
+- (void) sendString : (nonnull NSString *) string toHandle : (nonnull FGORosterHandleName *) handle;
+- (void) writeString : (nonnull NSString *) string toHandle : (nonnull FGOChatViewController *) handle;
 
 @end
 

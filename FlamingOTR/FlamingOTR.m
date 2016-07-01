@@ -85,6 +85,32 @@ static FlamingOTR * singleton = nil;
 	return output;
 }
 
+#pragma mark - Session tools
+
+- (FlamingOTRAccount *) getContextForAccount : (FGOAccount *) account
+{
+	NSString * signature = [FlamingOTRAccount signatureForAccount:account];
+	
+	FlamingOTRAccount * output = [sessionController objectForKey:signature];
+	
+	if(output == nil)
+	{
+		output = [[FlamingOTRAccount alloc] initWithAccount:account];
+
+		if(output != nil)
+		{
+			[sessionController setObject:output forKey:signature];
+		}
+	}
+	
+	return output;
+}
+
+- (FlamingOTRAccount *) getContextForSignature : (NSString *) signature
+{
+	return [sessionController objectForKey:signature];
+}
+
 #pragma mark - Communication hub
 
 - (void) sendString : (NSString *) string toHandle : (FGORosterHandleName *) handle

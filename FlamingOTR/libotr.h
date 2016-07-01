@@ -11,5 +11,10 @@
 
 #include <proto.h>
 #include <privkey.h>
+#include <message.h>
+
+//Callbacks
+const char * account_name(void *opdata, const char *account, const char *protocol);
+void account_name_free(void *opdata, const char *account_name);
 
 #endif /* libotr_h */
