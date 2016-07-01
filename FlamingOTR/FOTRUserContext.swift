@@ -37,6 +37,9 @@ import Foundation
 	{
 		if self.OTRState != nil
 		{
+			//Release the various sessions
+			closeSessionFromRootContext(self.OTRState)
+			
 			self.saveContext()
 			otrl_userstate_free(self.OTRState)
 		}
@@ -135,6 +138,11 @@ extension UserContext
 		}
 		
 		return true
+	}
+	
+	func triggerFingerprintSync()
+	{
+		_ = ("fp_" + accountID + ".fp").withCString	{	otrl_privkey_write_fingerprints(self.OTRState, $0)	}
 	}
 	
 	func saveContext()

@@ -23,9 +23,20 @@
 }
 
 @property (atomic, readonly) NSString * username;
+@property (atomic, readonly) OtrlMessageAppOps OTRJumptable;
+@property (atomic, readonly) UserContext* OTRContext;
+
+@property (atomic) BOOL shouldResetTimer;
+@property (atomic) BOOL hasTimer;
+
+@property (atomic, getter=isSecure) BOOL secure;
 
 - (instancetype) initWithAccount : (FGOAccount *) account;
 + (FGOAccount *) accountFromCVC : (FGOChatViewController *) controller;
+
++ (OtrlMessageAppOps) getJumptable;
+
+- (void) triggerFingerprintSync;
 
 - (NSString *) signature;
 + (NSString *) signatureForAccount : (FGOAccount *) account;

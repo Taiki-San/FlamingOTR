@@ -34,6 +34,8 @@
 			initialized = YES;
 		}
 	}
+	
+//	FlamingOTRAccount * account = [[FlamingOTRAccount alloc] initWithAccount:[FlamingOTRAccount accountFromCVC:controller]];
 
 	[self writeString:@"olololololololol" toHandle:controller];
 	sleep(1);
