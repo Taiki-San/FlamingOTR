@@ -29,16 +29,34 @@
 }
 
 //Hook FGOIMServiceConnection
-- (id) fgoIMServiceConnection_sendMessage:(FGOIMServiceMessage *) message fromAccount: (FGOAccount *) account
+- (id) fgoIMServiceConnection_sendMessage:(FGOIMServiceMessage *) message fromAccount: (FGOAccount *) _account
 {
 	if(message.body != nil && ![message.body hasPrefix:@"?OTR"])	//We don't want to process already OTRed strings
 	{
-//		[[FlamingOTR getShared] ]
-		NSLog(@"Sent: %@ - %@ - %@", message.body, message.to.name, account.sanitizedUsername.lowercaseString);
-		message.HTMLBody = nil;
+		FlamingOTRAccount * account = [[FlamingOTR getShared] getContextForAccount:_account];
+		FlamingOTRSession * session = [account sessionWithUsername:message.to.name];
+		
+		//We didn't started an OTR session
+		//Ideally, we should find out if we should stricly enforce them and refusing to send the message but meh, later
+		if(session == nil)
+		{
+			//Yef
+		}
+		
+		if(session != nil && session.isSecure)
+		{
+			NSString * encryptedMessage = [account encryptMessage:message.body withSession:session];
+			
+			if(encryptedMessage == nil)
+				return nil;
+			
+			message.body = encryptedMessage;
+		}
 	}
 	
-	return [self fgoIMServiceConnection_sendMessage:message fromAccount:account];
+	NSLog(@"Sending: %@ from %@ to %@", message.body, message.from.name, message.to.name);
+	
+	return [self fgoIMServiceConnection_sendMessage:message fromAccount:_account];
 }
 
 - (void)fgoIMServiceConnection_client:(id <FGOIMServiceClient>) client didReceiveMessage:(FGOIMServiceMessage *) message
@@ -47,10 +65,20 @@
 	{
 		if([message.body hasPrefix:@"?OTR"])
 		{
-			NSLog(@"Received OTR message from %@", message.from.name);
-			return;
+			FlamingOTRAccount * account = [[FlamingOTR getShared] getContextForSignature:
+										   [FlamingOTRAccount signatureFromMessageTo:message andClient:client]];
+			FlamingOTRSession * session = [account sessionWithUsername:message.to.name];
+			
+			NSString * decryptedMessage = [account decryptMessage:message.body withSession:session];
+			
+			if(decryptedMessage != nil)
+				message.body = decryptedMessage;
+			
+			//Service message, to be discarded
+			else
+				return;
 		}
-		//		[[FlamingOTR getShared] ]
+
 		NSLog(@"Received: %@ to %@ from %@", message.body, message.to.name, message.from.name);
 	}
 	

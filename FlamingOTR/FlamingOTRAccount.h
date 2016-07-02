@@ -20,6 +20,8 @@
 	
 	UserContext * OTRContext;
 	OtrlMessageAppOps OTRJumptable;
+	
+	NSMutableDictionary * sessions;
 }
 
 @property (atomic, readonly) NSString * username;
@@ -29,8 +31,6 @@
 @property (atomic) BOOL shouldResetTimer;
 @property (atomic) BOOL hasTimer;
 
-@property (atomic, getter=isSecure) BOOL secure;
-
 - (instancetype) initWithAccount : (FGOAccount *) account;
 + (FGOAccount *) accountFromCVC : (FGOChatViewController *) controller;
 
@@ -38,7 +38,17 @@
 
 - (void) triggerFingerprintSync;
 
+- (FlamingOTRSession *) sessionWithController : (FGOChatViewController *) viewController;
+- (FlamingOTRSession *) sessionWithUsername : (NSString *) buddyUsername;
+
 - (NSString *) signature;
 + (NSString *) signatureForAccount : (FGOAccount *) account;
++ (NSString *) signatureFromMessageTo : (FGOIMServiceMessage *) message andClient: (id <FGOIMServiceClient>) client;
+
+- (void) sendString : (NSString *) string toSession : (FlamingOTRSession *) session;
+- (void) sendString : (NSString *) string toRecipient : (NSString *) recipient;
+
+- (NSString *) encryptMessage : (NSString *) message withSession : (FlamingOTRSession *) session;
+- (NSString *) decryptMessage : (NSString *) message withSession : (FlamingOTRSession *) session;
 
 @end

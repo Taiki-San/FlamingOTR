@@ -44,6 +44,7 @@ typedef uint8_t byte;
 	#import "FlamingOTR-Swift.h"
 
 	#import "FOTRButton.h"
+	#import "FlamingOTRSession.h"
 	#import "FlamingOTRAccount.h"
 
 	#import "FlamingOTR.h"

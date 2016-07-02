@@ -12,59 +12,52 @@
 
 - (void) needActivateOTRForConversation : (FGOChatViewController *) conversation fromButton : (FOTRButton *) button
 {
-	NSNumber * token = [self getNewTokenForConversation:conversation];
+	FlamingOTRAccount * account = [self getContextForAccount:[FlamingOTRAccount accountFromCVC:conversation]];
+	FlamingOTRSession * session = [account sessionWithController:conversation];
+
+	if(session.isChangingSecureState)
+		return;
+	
+	session.changeSecureState = YES;
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		
-		[self initiateOTRSession:conversation];
+		[self initiateOTRSession:conversation fromButton:button];
 		
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			
-			if([self isToken:token validForConversation:conversation])
-				button.locked = [self getOTRSessionStatus:conversation];
-		});
 	});
 }
 
 - (void) needDisableOTRForConversation : (FGOChatViewController *) conversation fromButton : (FOTRButton *) button
 {
-	NSNumber * token = [self getNewTokenForConversation:conversation];
+	FlamingOTRAccount * account = [self getContextForAccount:[FlamingOTRAccount accountFromCVC:conversation]];
+	FlamingOTRSession * session = [account sessionWithController:conversation];
+	
+	if(session.isChangingSecureState)
+		return;
+	
+	session.changeSecureState = YES;
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		
-		[self killOTRSession:conversation];
-		
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			
-			if([self isToken:token validForConversation:conversation])
-				button.locked = [self getOTRSessionStatus:conversation];
-		});
+		[self killOTRSession:session];
+
 	});
 }
 
 - (void) needRefreshOTRForConversation : (FGOChatViewController *) conversation fromButton : (FOTRButton *) button
 {
-	NSNumber * token = [self getNewTokenForConversation:conversation];
+	FlamingOTRAccount * account = [self getContextForAccount:[FlamingOTRAccount accountFromCVC:conversation]];
+	FlamingOTRSession * session = [account sessionWithController:conversation];
+	
+	if(session.isChangingSecureState)
+		return;
+	
+	session.changeSecureState = YES;
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+		[self reloadOTRSession:session];
 		
-		//Interrupt potential session
-		if(button.locked == YES)
-			[self killOTRSession:conversation];
-		
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			
-			if([self isToken:token validForConversation:conversation])
-				button.locked = [self getOTRSessionStatus:conversation];
-		});
-		
-		[self initiateOTRSession:conversation];
-		
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			
-			if([self isToken:token validForConversation:conversation])
-				button.locked = [self getOTRSessionStatus:conversation];
-		});
 	});
 }
 

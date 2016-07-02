@@ -12,7 +12,7 @@
 
 #pragma mark - Core OTR module
 
-- (void) initiateOTRSession : (FGOChatViewController *) controller
+- (void) initiateOTRSession : (FGOChatViewController *) controller fromButton: (FOTRButton *) button
 {
 	//The core libOTR initialization should only be performed when necessary
 	if(!initialized)
@@ -21,7 +21,7 @@
 		//Because of the second requirement, we can't rely on dispatch_once
 		if(![NSThread isMainThread])
 		{
-			return	dispatch_sync(dispatch_get_main_queue(), ^{[self initiateOTRSession:controller];	});
+			return dispatch_sync(dispatch_get_main_queue(), ^{[self initiateOTRSession:controller fromButton:button];	});
 		}
 		//Initialization routine based on the OTRL_INIT macro
 		else if (otrl_init(OTRL_VERSION_MAJOR, OTRL_VERSION_MINOR, OTRL_VERSION_SUB))
@@ -35,21 +35,37 @@
 		}
 	}
 	
-//	FlamingOTRAccount * account = [[FlamingOTRAccount alloc] initWithAccount:[FlamingOTRAccount accountFromCVC:controller]];
+	FlamingOTRAccount * account = [self getContextForAccount:[FlamingOTRAccount accountFromCVC:controller]];
+	FlamingOTRSession * session = [account sessionWithController:controller];
+	
+	if(session != nil && !session.isSecure)
+	{
+		if(button != nil)
+			session.button = button;
 
-	[self writeString:@"olololololololol" toHandle:controller];
-	sleep(1);
+		[self initiateOTRSession:session];
+	}
 }
 
-- (void) killOTRSession : (FGOChatViewController *) controller
+- (void) initiateOTRSession:(FlamingOTRSession *) session
 {
-	sleep(1);
+	if(!initialized || session.button == nil || session.isSecure)
+		return;
+	
+	//OTR initialization :o
+	[session.account sendString:@"I want to do OTR with you <3" toSession:session];
 }
 
-static BOOL lol = NO;
-- (BOOL) getOTRSessionStatus : (FGOChatViewController *) controller
+- (void) killOTRSession : (FlamingOTRSession *) session
 {
-	return (lol = !lol);
+	if(!initialized || session == nil || !session.isSecure)
+		return;
+}
+
+- (void) reloadOTRSession : (FlamingOTRSession *) session
+{
+	[self killOTRSession:session];
+	[self initiateOTRSession:session];
 }
 
 @end

@@ -18,8 +18,8 @@ const char * account_name(void *opdata, const char *_account, const char *protoc
 		NSString * signature = [NSString stringWithUTF8String:_account];
 		if(signature != nil)
 			account = [[FlamingOTR getShared] getContextForSignature:signature];
-		
 	}
+	
 	if(account != nil)
 	{
 		output = strdup(account.username.UTF8String);
@@ -36,28 +36,20 @@ void account_name_free(void *opdata, const char *account_name)
 void gone_secure(void *opdata, ConnContext *context)
 {
 	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
-	if(account == nil)
-	{
-		NSString * signature = [NSString stringWithUTF8String:context->accountname];
-		if(signature != nil)
-			account = [[FlamingOTR getShared] getContextForSignature:signature];
-	}
+	FlamingOTRSession * session = [account sessionWithUsername:[NSString stringWithUTF8String:context->username]];
 	
-	account.secure = YES;
+	if(session != nil)
+		session.secure = YES;
 }
 
 /* A ConnContext has left a secure state. */
 void gone_insecure (void *opdata, ConnContext *context)
 {
 	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
-	if(account == nil)
-	{
-		NSString * signature = [NSString stringWithUTF8String:context->accountname];
-		if(signature != nil)
-			account = [[FlamingOTR getShared] getContextForSignature:signature];
-	}
-
-	account.secure = NO;
+	FlamingOTRSession * session = [account sessionWithUsername:[NSString stringWithUTF8String:context->username]];
+	
+	if(session != nil)
+		session.secure = NO;
 }
 
 void create_privkey(void *opdata, const char *accountname, const char *protocol)
@@ -75,13 +67,19 @@ void inject_message(void *opdata, const char *accountname, const char *protocol,
 	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
 	if(account != nil)
 	{
-		NSLog(@"Should send %s to %s", message, recipient);
+		NSLog(@"Sending %s to %s", message, recipient);
+		[account sendString:[NSString stringWithUTF8String:message] toRecipient:[NSString stringWithUTF8String:recipient]];
 	}
 }
 
 int is_logged_in(void *opdata, const char *accountname, const char *protocol, const char *recipient)
 {
-#warning "Should bridge the logic"
+	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
+	FlamingOTRSession * session = [account sessionWithUsername:[NSString stringWithUTF8String:recipient]];
+	
+	if(session != nil)
+		return session.isOnline;
+
 	return -1;
 }
 
@@ -129,7 +127,7 @@ void timer_control(void *opdata, unsigned int interval)
 
 void received_symkey(void *opdata, ConnContext *context, unsigned int use, const unsigned char *usedata, size_t usedatalen, const unsigned char *symkey)
 {
-	NSLog(@"A contact's client (%s) requested the use of an alternative symetric key. Probably harmless but could be worth tracing", context->username);
+	NSLog(@"%s's client requested the use of an alternative symetric key. Probably harmless but could be worth tracing", context->username);
 }
 
 const char * otr_error_message(void *opdata, ConnContext *context, OtrlErrorCode err_code)
@@ -179,7 +177,7 @@ void handle_msg_event(void *opdata, OtrlMessageEvent msg_event, ConnContext *con
 		case OTRL_MSGEVENT_ENCRYPTION_REQUIRED:
 		{
 #warning "Could be worth sending this message"
-			NSLog(@"Hum, you're trying to send an uncrypted message but you said you wanted to enforce strictly your privacy with this contact :/");
+			NSLog(@"Hum, you're trying to send an unencrypted message but you said you wanted to enforce strictly your privacy with this contact :/");
 			break;
 		}
 			

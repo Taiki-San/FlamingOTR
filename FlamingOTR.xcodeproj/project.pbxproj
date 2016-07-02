@@ -24,6 +24,8 @@
 		B6782C361D16A0AC007F1573 /* Flamingo.h in Headers */ = {isa = PBXBuildFile; fileRef = B6782C351D16A0AC007F1573 /* Flamingo.h */; };
 		B6912A0C1D26D5E200E6E508 /* FlamingOTRAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = B6912A0A1D26D5E200E6E508 /* FlamingOTRAccount.h */; };
 		B6912A0D1D26D5E200E6E508 /* FlamingOTRAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B6912A0B1D26D5E200E6E508 /* FlamingOTRAccount.m */; };
+		B6912A101D28097500E6E508 /* FlamingOTRSession.h in Headers */ = {isa = PBXBuildFile; fileRef = B6912A0E1D28097500E6E508 /* FlamingOTRSession.h */; };
+		B6912A111D28097500E6E508 /* FlamingOTRSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6912A0F1D28097500E6E508 /* FlamingOTRSession.m */; };
 		B6F79D771D16C94A00415AB1 /* FOTRButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B6F79D751D16C94A00415AB1 /* FOTRButton.h */; };
 		B6F79D781D16C94A00415AB1 /* FOTRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F79D761D16C94A00415AB1 /* FOTRButton.m */; };
 		B6FA42071D0AD15900BDD9BB /* FlamingHook.h in Headers */ = {isa = PBXBuildFile; fileRef = B6FA42051D0AD15900BDD9BB /* FlamingHook.h */; };
@@ -73,6 +75,8 @@
 		B6782C401D16A299007F1573 /* XMPPFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFramework.framework; path = "FlamingOTR/Dumped Frameworks/XMPPFramework.framework"; sourceTree = "<group>"; };
 		B6912A0A1D26D5E200E6E508 /* FlamingOTRAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlamingOTRAccount.h; sourceTree = "<group>"; };
 		B6912A0B1D26D5E200E6E508 /* FlamingOTRAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlamingOTRAccount.m; sourceTree = "<group>"; };
+		B6912A0E1D28097500E6E508 /* FlamingOTRSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlamingOTRSession.h; sourceTree = "<group>"; };
+		B6912A0F1D28097500E6E508 /* FlamingOTRSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlamingOTRSession.m; sourceTree = "<group>"; };
 		B6F79D701D16C89100415AB1 /* lock-locked.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "lock-locked.tiff"; path = "Ressources/lock-locked.tiff"; sourceTree = "<group>"; };
 		B6F79D711D16C89100415AB1 /* lock-unlocked.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "lock-unlocked.tiff"; path = "Ressources/lock-unlocked.tiff"; sourceTree = "<group>"; };
 		B6F79D751D16C94A00415AB1 /* FOTRButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FOTRButton.h; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 			children = (
 				B6912A0A1D26D5E200E6E508 /* FlamingOTRAccount.h */,
 				B6912A0B1D26D5E200E6E508 /* FlamingOTRAccount.m */,
+				B6912A0E1D28097500E6E508 /* FlamingOTRSession.h */,
+				B6912A0F1D28097500E6E508 /* FlamingOTRSession.m */,
 				B65133E51D201AB500A73BFB /* FlamingOTR-Bridging-Header.h */,
 				B62572521D0709A900978F5D /* FlamingOTR.h */,
 				B62572541D0709A900978F5D /* FlamingOTR.m */,
@@ -227,6 +233,7 @@
 			files = (
 				B6FA42071D0AD15900BDD9BB /* FlamingHook.h in Headers */,
 				B6F79D771D16C94A00415AB1 /* FOTRButton.h in Headers */,
+				B6912A101D28097500E6E508 /* FlamingOTRSession.h in Headers */,
 				B6912A0C1D26D5E200E6E508 /* FlamingOTRAccount.h in Headers */,
 				B62572531D0709A900978F5D /* FlamingOTR.h in Headers */,
 				B6782C361D16A0AC007F1573 /* Flamingo.h in Headers */,
@@ -332,6 +339,7 @@
 				B636EDFA1D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m in Sources */,
 				B62572551D0709A900978F5D /* FlamingOTR.m in Sources */,
 				B6322D5B1D25D3B300BFC6DA /* libotr_callback.m in Sources */,
+				B6912A111D28097500E6E508 /* FlamingOTRSession.m in Sources */,
 				B6912A0D1D26D5E200E6E508 /* FlamingOTRAccount.m in Sources */,
 				B625725C1D0710EE00978F5D /* hooker.m in Sources */,
 				B6F79D781D16C94A00415AB1 /* FOTRButton.m in Sources */,
