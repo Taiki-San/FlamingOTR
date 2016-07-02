@@ -6,6 +6,8 @@
 //  Copyright © 2016 Taiki. All rights reserved.
 //
 
+#define DEFAULT_PROTOCOL "xmpp"
+
 @interface FlamingOTR : NSObject
 {
 	BOOL initialized;

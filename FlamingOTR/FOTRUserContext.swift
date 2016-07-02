@@ -65,7 +65,7 @@ extension UserContext
 
 			//Generate a new PK
 			var newPKContext : UnsafeMutablePointer<Void>?
-			error = gcry_err_code( path.withCString{ otrl_privkey_generate_start(self.OTRState, $0, "xmpp", &newPKContext) })
+			error = gcry_err_code( path.withCString{ otrl_privkey_generate_start(self.OTRState, $0, DEFAULT_PROTOCOL, &newPKContext) })
 			
 			if error != GPG_ERR_NO_ERROR
 			{
@@ -125,7 +125,7 @@ extension UserContext
 			//If we just need a new instance
 			error = gcry_err_code( path.withCString({cPath in
 				accountID.withCString({ cAccount in
-					otrl_instag_generate(self.OTRState, cPath, cAccount, "xmpp")
+					otrl_instag_generate(self.OTRState, cPath, cAccount, DEFAULT_PROTOCOL)
 				})
 			}))
 		}

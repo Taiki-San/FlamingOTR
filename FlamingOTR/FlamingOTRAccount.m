@@ -9,8 +9,7 @@
 @implementation FlamingOTRAccount
 
 @synthesize username = username;
-@synthesize OTRJumptable = OTRJumptable;
-@synthesize OTRContext = OTRContext;
+@synthesize realName = realName;
 
 - (instancetype) initWithAccount : (FGOAccount *) _account
 {
@@ -23,6 +22,7 @@
 		account = _account;
 		service = account.service;
 		
+		realName = account.name;
 		username = account.sanitizedUsername;
 		serverHost = service.serverHost;
 		serverPort = service.serverPort;
@@ -33,13 +33,11 @@
 
 #pragma mark - OTR
 
-- (UserContext *) getOTRContext
+- (UserContext *) OTRContext
 {
 	if(OTRContext == nil)
 	{
 		OTRContext = [[UserContext alloc] initWithAccount : self.signature];
-
-		OTRJumptable = [[self class] getJumptable];
 	}
 
 	return OTRContext;
@@ -144,20 +142,6 @@
 	return output;
 }
 
-+ (NSString *) signatureFromMessageTo : (FGOIMServiceMessage *) message andClient: (id <FGOIMServiceClient>) client
-{
-	NSString * output = nil;
-	
-	if(message != nil && client != nil)
-	{
-		FGOIMServiceAttributes * attributes = client.account.serviceAttributes;
-		
-		output = [NSString stringWithFormat:@"%@ %@ %lld", message.to.name.lowercaseString, attributes.serverHost, attributes.serverPort];
-	}
-	
-	return output;
-}
-
 - (void) sendString : (NSString *) string toSession : (FlamingOTRSession *) session
 {
 	[session sendString:string withAccount:account];
@@ -179,7 +163,7 @@
 	gcry_error_t err;
 	char *newMessage = NULL;
 	
-	err = otrl_message_sending(self.OTRContext.OTRState, &jumptable, (__bridge void *) self, self.signature.UTF8String, "xmpp",
+	err = otrl_message_sending(self.OTRContext.OTRState, &jumptable, (__bridge void *) self, self.signature.UTF8String, DEFAULT_PROTOCOL,
 							   session.buddyUsername.UTF8String, OTRL_INSTAG_BEST, message.UTF8String, NULL,
 							   &newMessage, OTRL_FRAGMENT_SEND_SKIP, NULL, NULL, NULL);
 	
@@ -205,7 +189,7 @@
 	OtrlMessageAppOps jumptable = [[self class] getJumptable];
 	char *newMessage = NULL;
 	
-	bool ignoreMessage = otrl_message_receiving(self.OTRContext.OTRState, &jumptable, (__bridge void *) self, self.signature.UTF8String, "xmpp", session.buddyUsername.UTF8String, message.UTF8String, &newMessage, NULL, NULL, NULL, NULL);
+	bool ignoreMessage = otrl_message_receiving(self.OTRContext.OTRState, &jumptable, (__bridge void *) self, self.signature.UTF8String, DEFAULT_PROTOCOL, session.buddyUsername.UTF8String, message.UTF8String, &newMessage, NULL, NULL, NULL, NULL);
 	
 	NSString * output = nil;
 	

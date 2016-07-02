@@ -49,6 +49,8 @@
 
 - (void) initiateOTRSession:(FlamingOTRSession *) session
 {
+	NSLog(@"Initiate OTR session from %@ with %@", session.account.username, session.buddyUsername);
+
 	if(!initialized || session.button == nil || session.isSecure)
 		return;
 	
@@ -58,6 +60,8 @@
 
 - (void) killOTRSession : (FlamingOTRSession *) session
 {
+	NSLog(@"Stop OTR session from %@ with %@", session.account.username, session.buddyUsername);
+
 	if(!initialized || session == nil || !session.isSecure)
 		return;
 }

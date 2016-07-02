@@ -12,6 +12,7 @@
 	FGORosterHandleName * handleName;
 	FGOMessagingService * service;
 	
+	NSString * realName;
 	NSString * username;
 	NSString * serverHost;
 	NSNumber * serverPort;
@@ -19,13 +20,12 @@
 	NSString * cachedSignature;
 	
 	UserContext * OTRContext;
-	OtrlMessageAppOps OTRJumptable;
 	
 	NSMutableDictionary * sessions;
 }
 
 @property (atomic, readonly) NSString * username;
-@property (atomic, readonly) OtrlMessageAppOps OTRJumptable;
+@property (atomic, readonly) NSString * realName;
 @property (atomic, readonly) UserContext* OTRContext;
 
 @property (atomic) BOOL shouldResetTimer;

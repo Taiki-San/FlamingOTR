@@ -38,6 +38,8 @@ void gone_secure(void *opdata, ConnContext *context)
 	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
 	FlamingOTRSession * session = [account sessionWithUsername:[NSString stringWithUTF8String:context->username]];
 	
+	NSLog(@"OTR session from %@ with %@ is secure!", session.account.username, session.buddyUsername);
+	
 	if(session != nil)
 		session.secure = YES;
 }
@@ -47,6 +49,8 @@ void gone_insecure (void *opdata, ConnContext *context)
 {
 	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
 	FlamingOTRSession * session = [account sessionWithUsername:[NSString stringWithUTF8String:context->username]];
+	
+	NSLog(@"OTR session from %@ with %@ is NOT secure!", session.account.username, session.buddyUsername);
 	
 	if(session != nil)
 		session.secure = NO;
@@ -156,6 +160,9 @@ const char * otr_error_message(void *opdata, ConnContext *context, OtrlErrorCode
 			output = NULL;
 			break;
 	}
+	
+	if(output != NULL)
+		NSLog(@"[Error]: %s", output);
 	
 	return strdup(output);
 }
