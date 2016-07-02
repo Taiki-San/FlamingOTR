@@ -43,7 +43,6 @@
 
 - (NSString *) signature;
 + (NSString *) signatureForAccount : (FGOAccount *) account;
-+ (NSString *) signatureFromMessageTo : (FGOIMServiceMessage *) message andClient: (id <FGOIMServiceClient>) client;
 
 - (void) sendString : (NSString *) string toSession : (FlamingOTRSession *) session;
 - (void) sendString : (NSString *) string toRecipient : (NSString *) recipient;

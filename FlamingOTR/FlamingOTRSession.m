@@ -22,12 +22,12 @@
 
 + (NSString *) buddyUsernameForController : (FGOChatViewController *) controller
 {
-	return controller.presence.from.name;
+	return controller.handleName.name;
 }
 
 - (NSString *) buddyUsername
 {
-	return viewController.presence.from.name;
+	return viewController.handleName.name;
 }
 
 #pragma mark - Core features
