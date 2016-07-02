@@ -119,7 +119,7 @@ void timer_control(void *opdata, unsigned int interval)
 			account.hasTimer = NO;
 			account.shouldResetTimer = YES;
 			
-			OtrlMessageAppOps jumptable = account.OTRJumptable;
+			OtrlMessageAppOps jumptable = [FlamingOTRAccount getJumptable];
 			
 			otrl_message_poll(account.OTRContext.OTRState, &jumptable, opdata);
 			
