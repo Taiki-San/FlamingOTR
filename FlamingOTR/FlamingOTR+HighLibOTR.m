@@ -54,8 +54,14 @@
 	if(!initialized || session.button == nil || session.isSecure)
 		return;
 	
-	//OTR initialization :o
-	[session.account sendString:@"I want to do OTR with you <3" toSession:session];
+	char * message = otrl_proto_default_query_msg(session.account.username.UTF8String, get_policy(NULL, NULL));
+	
+	if(message != NULL)
+	{
+		//OTR initialization :o
+		[session.account sendString:[NSString stringWithUTF8String:message] toSession:session];
+		free(message);
+	}
 }
 
 - (void) killOTRSession : (FlamingOTRSession *) session
@@ -64,6 +70,10 @@
 
 	if(!initialized || session == nil || !session.isSecure)
 		return;
+	
+	OtrlMessageAppOps jumptable = [FlamingOTRAccount getJumptable];
+	
+	otrl_message_disconnect_all_instances(session.account.OTRContext.OTRState, &jumptable, (__bridge void *) session.account, session.account.signature.UTF8String, DEFAULT_PROTOCOL, session.buddyUsername.UTF8String);
 }
 
 - (void) reloadOTRSession : (FlamingOTRSession *) session
