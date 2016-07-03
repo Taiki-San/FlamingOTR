@@ -20,12 +20,17 @@
 	//We insert the OTR control button
 	FGOChatViewController * controller = (id) self;
 	
+	//Generate a session and an account so the preprocessing can start right now
+	FlamingOTRSession * session = [[[FlamingOTR getShared] getContextForAccount:[FlamingOTRAccount accountFromCVC:controller]] sessionWithController:controller];
+	
 	FOTRButton * button = [[FOTRButton alloc] initButtonWithController:controller];
 	if(button != nil)
 	{
 		button.coreListener = [FlamingOTR getShared];
 		[controller.titleBarView addSubview:button];		//The button position is auto set as it already has to handle the container frame changes
 	}
+	
+	session.button = button;
 }
 
 //Hook FGOIMServiceConnection
@@ -54,7 +59,10 @@
 		}
 	}
 	
-	NSLog(@"Sending: %@ from %@ to %@", message.body, message.from.name, message.to.name);
+#ifdef LOG_EVERYTHING
+	if(message.body != nil)
+		NSLog(@"Sending: %@ from %@ to %@", message.body, [[FlamingOTR getShared] getContextForAccount:_account].username, message.to.name);
+#endif
 	
 	return [self fgoIMServiceConnection_sendMessage:message fromAccount:_account];
 }
@@ -67,7 +75,7 @@
 		{
 			FlamingOTRAccount * account = [[FlamingOTR getShared] getContextForAccount:[(FGOIMServiceConnection *) client.delegate accountForClient:client]];
 			
-			FlamingOTRSession * session = [account sessionWithUsername:message.to.name];
+			FlamingOTRSession * session = [account sessionWithUsername:message.from.name];
 			if(session == nil)
 			{
 				//Okay, the ChatViewController doesn't exist.
@@ -130,7 +138,7 @@
 				NSString * decryptedMessage = [account decryptMessage:message.body withSession:session];
 				
 				if(decryptedMessage != nil)
-					message.body = decryptedMessage;
+					message.body = message.HTMLBody = decryptedMessage;
 				
 				//Service message, to be discarded
 				else
@@ -138,7 +146,9 @@
 			}
 		}
 		
+#ifdef LOG_EVERYTHING
 		NSLog(@"Received: %@ to %@ from %@", message.body, message.to.name, message.from.name);
+#endif
 	}
 	
 	[self fgoIMServiceConnection_client:client didReceiveMessage:message];
