@@ -78,6 +78,8 @@
 	OtrlMessageAppOps jumptable = [FlamingOTRAccount getJumptable];
 	
 	otrl_message_disconnect_all_instances(session.account.OTRContext.OTRState, &jumptable, (__bridge void *) session.account, session.account.signature.UTF8String, DEFAULT_PROTOCOL, session.buddyUsername.UTF8String);
+
+	session.secure = NO;
 }
 
 - (void) reloadOTRSession : (FlamingOTRSession *) session

@@ -62,7 +62,31 @@ void gone_insecure (void *opdata, ConnContext *context)
 
 void create_privkey(void *opdata, const char *accountname, const char *protocol)
 {
-	NSLog(@"Shouldn't be called!");
+	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
+	
+	//We should wait for the PK generation to finish
+	if(account.OTRContext == nil)
+	{
+		[account generateOTRContext];
+	}
+	else if(account.OTRContext.OTRState == NULL)
+	{
+		[account.OTRContext loadContext];
+	}
+	
+	NSString * file = [NSString stringWithFormat:@"pk_%@.pk", account.OTRContext.accountID];
+	const char * cFile = file.UTF8String;
+	
+	//We timeout after one minute
+	for(uint i = 0; i < 60 * 100; i++)
+	{
+		if(checkFileExist(cFile))
+			break;
+
+		usleep(10000);
+	}
+	
+	//The PK either exist or we timed out...
 }
 
 OtrlPolicy get_policy(void *opdata, ConnContext *context)

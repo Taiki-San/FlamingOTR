@@ -10,6 +10,7 @@
 
 @synthesize username = username;
 @synthesize realName = realName;
+@synthesize OTRContext = OTRContext;
 
 - (instancetype) initWithAccount : (FGOAccount *) _account
 {
@@ -26,6 +27,8 @@
 		username = account.sanitizedUsername;
 		serverHost = service.serverHost;
 		serverPort = service.serverPort;
+
+		[self generateOTRContext];
 	}
 	
 	return self;
@@ -33,14 +36,12 @@
 
 #pragma mark - OTR
 
-- (UserContext *) OTRContext
+- (void) generateOTRContext
 {
-	if(OTRContext == nil)
+	if(OTRContext == NULL)
 	{
 		OTRContext = [[UserContext alloc] initWithAccount : self.signature];
 	}
-
-	return OTRContext;
 }
 
 + (OtrlMessageAppOps) getJumptable

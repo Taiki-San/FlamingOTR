@@ -34,12 +34,15 @@
 - (instancetype) initWithAccount : (FGOAccount *) account;
 + (FGOAccount *) accountFromCVC : (FGOChatViewController *) controller;
 
+- (void) generateOTRContext;
 + (OtrlMessageAppOps) getJumptable;
 
 - (void) triggerFingerprintSync;
 
 - (FlamingOTRSession *) sessionWithController : (FGOChatViewController *) viewController;
 - (FlamingOTRSession *) sessionWithUsername : (NSString *) buddyUsername;
+
++ (FGOAccount *) accountFromCVC : (FGOChatViewController *) controller;
 
 - (NSString *) signature;
 + (NSString *) signatureForAccount : (FGOAccount *) account;

@@ -64,7 +64,7 @@
 
 - (BOOL) isOnline
 {
-	return YES;
+	return viewController.presence.isOnline;
 }
 
 - (void) setSecure:(BOOL)secure
@@ -72,6 +72,7 @@
 	if(_secure != secure)
 	{
 		_secure = secure;
+		_changeSecureState = NO;
 		
 		if(![NSThread isMainThread])
 		{

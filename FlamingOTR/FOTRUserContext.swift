@@ -65,7 +65,7 @@ extension UserContext
 
 			//Generate a new PK
 			var newPKContext : UnsafeMutablePointer<Void>?
-			error = gcry_err_code( path.withCString{ otrl_privkey_generate_start(self.OTRState, $0, DEFAULT_PROTOCOL, &newPKContext) })
+			error = gcry_err_code( accountID.withCString{ otrl_privkey_generate_start(self.OTRState, $0, DEFAULT_PROTOCOL, &newPKContext) })
 			
 			if error != GPG_ERR_NO_ERROR
 			{
