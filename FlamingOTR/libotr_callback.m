@@ -42,6 +42,8 @@ void gone_secure(void *opdata, ConnContext *context)
 	NSLog(@"OTR session from %@ with %@ is secure!", session.account.username, session.buddyUsername);
 #endif
 	
+	[session writeString: @"<b>OTR session started<b>"];
+	
 	if(session != nil)
 		session.secure = YES;
 }
@@ -55,6 +57,8 @@ void gone_insecure (void *opdata, ConnContext *context)
 #ifdef LOG_EVERYTHING
 	NSLog(@"OTR session from %@ with %@ is NOT secure!", session.account.username, session.buddyUsername);
 #endif
+	
+	[session writeString: @"<b>OTR session ended<b>"];
 	
 	if(session != nil)
 		session.secure = NO;

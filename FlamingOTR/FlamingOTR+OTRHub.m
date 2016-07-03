@@ -36,12 +36,8 @@
 		return;
 	
 	session.changeSecureState = YES;
-	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		
-		[self killOTRSession:session];
 
-	});
+	[self killOTRSession:session];
 }
 
 - (void) needRefreshOTRForConversation : (FGOChatViewController *) conversation fromButton : (FOTRButton *) button
@@ -54,9 +50,11 @@
 	
 	session.changeSecureState = YES;
 	
+	[self killOTRSession:session];
+
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
-		[self reloadOTRSession:session];
+		[self initiateOTRSession:session];
 		
 	});
 }

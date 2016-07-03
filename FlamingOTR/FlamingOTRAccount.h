@@ -42,8 +42,6 @@
 - (FlamingOTRSession *) sessionWithController : (FGOChatViewController *) viewController;
 - (FlamingOTRSession *) sessionWithUsername : (NSString *) buddyUsername;
 
-+ (FGOAccount *) accountFromCVC : (FGOChatViewController *) controller;
-
 - (NSString *) signature;
 + (NSString *) signatureForAccount : (FGOAccount *) account;
 

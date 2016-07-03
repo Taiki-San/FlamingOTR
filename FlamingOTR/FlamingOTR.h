@@ -29,6 +29,5 @@
 - (void) initiateOTRSession : (nonnull FGOChatViewController *) controller fromButton: (nonnull FOTRButton *) button;
 - (void) initiateOTRSession:(nonnull FlamingOTRSession *) session;
 - (void) killOTRSession : (nonnull FlamingOTRSession *) controller;
-- (void) reloadOTRSession : (nonnull FlamingOTRSession *) controller;
 
 @end

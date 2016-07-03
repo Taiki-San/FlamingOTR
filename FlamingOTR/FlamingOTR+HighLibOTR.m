@@ -79,13 +79,20 @@
 	
 	otrl_message_disconnect_all_instances(session.account.OTRContext.OTRState, &jumptable, (__bridge void *) session.account, session.account.signature.UTF8String, DEFAULT_PROTOCOL, session.buddyUsername.UTF8String);
 
-	session.secure = NO;
-}
-
-- (void) reloadOTRSession : (FlamingOTRSession *) session
-{
-	[self killOTRSession:session];
-	[self initiateOTRSession:session];
+	if([NSThread isMainThread])
+	{
+		ConnContext context;
+		context.username = (char *) session.buddyUsername.UTF8String;
+		jumptable.gone_insecure((__bridge void *) session.account, &context);
+	}
+	else
+	{
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			ConnContext context;
+			context.username = (char *) session.buddyUsername.UTF8String;
+			jumptable.gone_insecure((__bridge void *) session.account, &context);
+		});
+	}
 }
 
 @end

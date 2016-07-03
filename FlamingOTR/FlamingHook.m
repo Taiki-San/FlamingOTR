@@ -138,7 +138,10 @@
 				NSString * decryptedMessage = [account decryptMessage:message.body withSession:session];
 				
 				if(decryptedMessage != nil)
+				{
 					message.body = message.HTMLBody = decryptedMessage;
+					message.attributedContents = [[NSAttributedString alloc] mn_initWithHTMLString:message.body];
+				}
 				
 				//Service message, to be discarded
 				else
