@@ -38,7 +38,9 @@ void gone_secure(void *opdata, ConnContext *context)
 	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
 	FlamingOTRSession * session = [account sessionWithUsername:[NSString stringWithUTF8String:context->username]];
 	
+#ifdef LOG_EVERYTHING
 	NSLog(@"OTR session from %@ with %@ is secure!", session.account.username, session.buddyUsername);
+#endif
 	
 	if(session != nil)
 		session.secure = YES;
@@ -50,7 +52,9 @@ void gone_insecure (void *opdata, ConnContext *context)
 	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
 	FlamingOTRSession * session = [account sessionWithUsername:[NSString stringWithUTF8String:context->username]];
 	
+#ifdef LOG_EVERYTHING
 	NSLog(@"OTR session from %@ with %@ is NOT secure!", session.account.username, session.buddyUsername);
+#endif
 	
 	if(session != nil)
 		session.secure = NO;
@@ -71,7 +75,6 @@ void inject_message(void *opdata, const char *accountname, const char *protocol,
 	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
 	if(account != nil)
 	{
-		NSLog(@"Sending %s to %s", message, recipient);
 		[account sendString:[NSString stringWithUTF8String:message] toRecipient:[NSString stringWithUTF8String:recipient]];
 	}
 }
@@ -179,6 +182,9 @@ void handle_smp_event(void *opdata, OtrlSMPEvent smp_event, ConnContext *context
 
 void handle_msg_event(void *opdata, OtrlMessageEvent msg_event, ConnContext *context, const char *message, gcry_error_t err)
 {
+	FlamingOTRAccount * account = (__bridge FlamingOTRAccount *)(opdata);
+	FlamingOTRSession * session = [account sessionWithUsername:[NSString stringWithUTF8String:context->username]];
+
 	switch(msg_event)
 	{
 		case OTRL_MSGEVENT_ENCRYPTION_REQUIRED:
@@ -197,21 +203,21 @@ void handle_msg_event(void *opdata, OtrlMessageEvent msg_event, ConnContext *con
 			
 		case OTRL_MSGEVENT_CONNECTION_ENDED:
 		{
-#warning "Could be worth sending this message"
-			NSLog(@"OTR session ended, you should do the same");
+			if(session.isSecure)
+				[session writeString:@"<b>OTR session ended, you should do the same, as your contact won't be able to read you.<b>"];
+
 			break;
 		}
 			
 		case OTRL_MSGEVENT_SETUP_ERROR:
 		{
-#warning "Could be worth sending this message"
-			NSLog(@"Couldn't set up the encrypted channel, error: %s", gpg_strerror(err));
+			[session writeString: [NSString stringWithFormat:@"<b>Couldn't set up the encrypted channel, error: %s<b>", gpg_strerror(err)]];
 			break;
 		}
 			
 		case OTRL_MSGEVENT_MSG_REFLECTED:
 		{
-			NSLog(@"Someone is trying to play funny... We're receiving our own OTR messages...");
+			[session writeString: @"<b>Someone is trying to play funny... We're receiving our own OTR messages...<b>"];
 			break;
 		}
 			
@@ -226,27 +232,29 @@ void handle_msg_event(void *opdata, OtrlMessageEvent msg_event, ConnContext *con
 		case OTRL_MSGEVENT_RCVDMSG_MALFORMED:
 		case OTRL_MSGEVENT_RCVDMSG_UNRECOGNIZED:
 		{
-#warning "Should notify that we received an invalid message"
-			NSLog(@"We received some stuffs we couldn't parse :/");
+			[session writeString: @"<b>We received some messages we couldn't parse :/<b>"];
 			break;
 		}
 			
 		case OTRL_MSGEVENT_LOG_HEARTBEAT_RCVD:
 		case OTRL_MSGEVENT_LOG_HEARTBEAT_SENT:
 		{
+#ifdef LOG_EVERYTHING
 			NSLog(@"AI Core is still online ~");
+#endif
 			break;
 		}
 			
 		case OTRL_MSGEVENT_RCVDMSG_GENERAL_ERR:
 		{
+			[session writeString: [NSString stringWithFormat:@"<b>Something went very wrong: %s<b>", message]];
 			NSLog(@"Something went very wrong: %s", message);
 			break;
 		}
 			
 		case OTRL_MSGEVENT_RCVDMSG_UNENCRYPTED:
 		{
-#warning "We received an unencrypted message :CCCC"
+			[session writeString:@"<b>Use OTR damnint<b>"];
 			break;
 		}
 			

@@ -49,7 +49,9 @@
 
 - (void) initiateOTRSession:(FlamingOTRSession *) session
 {
+#ifdef LOG_EVERYTHING
 	NSLog(@"Initiate OTR session from %@ with %@", session.account.username, session.buddyUsername);
+#endif
 
 	if(!initialized || session.button == nil || session.isSecure)
 		return;
@@ -66,7 +68,9 @@
 
 - (void) killOTRSession : (FlamingOTRSession *) session
 {
+#ifdef LOG_EVERYTHING
 	NSLog(@"Stop OTR session from %@ with %@", session.account.username, session.buddyUsername);
+#endif
 
 	if(!initialized || session == nil || !session.isSecure)
 		return;
