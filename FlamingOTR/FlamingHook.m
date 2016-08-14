@@ -6,7 +6,6 @@
 //  Copyright © 2016 Taiki. All rights reserved.
 //
 
-#import "FlamingHook.h"
 #include <objc/runtime.h>
 
 @implementation FlamingHook
@@ -15,28 +14,99 @@
 
 - (void) fgochatviewcontroller_loadView
 {
-	[self fgochatviewcontroller_loadView];
-	
-	//We insert the OTR control button
 	FGOChatViewController * controller = (id) self;
+
+	//We remove the OTR status messages
+	NSMutableIndexSet * indexSet = [NSMutableIndexSet new];
+	
+	[controller.messages enumerateObjectsUsingBlock:^(FGOPresenceChatMessage * message, NSUInteger idx, BOOL * stop)
+	{
+		if([[message className] isEqualToString:@"FGOPresenceChatMessage"] && message.statusType.intValue == PCODE_OTR)
+		{
+			[indexSet addIndex:idx];
+		}
+	}];
+
+	if([indexSet count] > 0)
+	{
+		NSMutableArray * mutableMessages = controller.messages.mutableCopy;
+		[mutableMessages removeObjectsAtIndexes:indexSet];
+		controller.messages = [NSArray arrayWithArray:mutableMessages];
+	}
+	
+	//Standard initialization
+	[self fgochatviewcontroller_loadView];
 	
 	//Generate a session and an account so the preprocessing can start right now
 	FlamingOTRSession * session = [[[FlamingOTR getShared] getContextForAccount:[FlamingOTRAccount accountFromCVC:controller]] sessionWithController:controller];
 	
-	FOTRButton * button = [[FOTRButton alloc] initButtonWithController:controller];
-	if(button != nil)
+	if(session != nil)
 	{
-		button.coreListener = [FlamingOTR getShared];
-		[controller.titleBarView addSubview:button];		//The button position is auto set as it already has to handle the container frame changes
+		//We insert the OTR control button
+		FOTRButton * button = [[FOTRButton alloc] initButtonWithController:controller];
+		if(button != nil)
+		{
+			button.coreListener = [FlamingOTR getShared];
+			[controller.titleBarView addSubview:button];		//The button position is auto set as it already has to handle the container frame changes
+		}
+		
+		session.button = button;
 	}
 	
-	session.button = button;
+	[[FlamingOTR getShared] registerSession:session withTableView:controller.tableView];
+}
+
+//Hook FGOChatPresenceTableCellView
+- (void) FGOChatPresenceTableCellView_viewDidMoveToWindow
+{
+	[self FGOChatPresenceTableCellView_viewDidMoveToWindow];
+	
+	FGOChatPresenceTableCellView * view = (id) self;
+	__block FGOChatLineImageView * image = nil;
+	__block FlamingOTRSession * session;
+ 
+	//First, we need to find our tableview to recover the session
+	NSView * superview = view.superview;
+	while (superview != nil && ![[superview className] isEqualToString:@"FGOChatTableView"])
+		superview = superview.superview;
+	
+	session = [[FlamingOTR getShared] sessionFromTableview:(id) superview];
+	
+	[view.subviews enumerateObjectsUsingBlock:^(NSView * obj, NSUInteger idx, BOOL * stop) {
+
+		if([[obj className] isEqualToString:@"BTRImageView"])
+			image = (id) obj;
+		
+		else if([obj isKindOfClass:[NSTextField class]])
+		{
+			NSTextField * textField = (id) obj;
+			NSString * messageHTML = textField.attributedStringValue.mn_HTMLRepresentationFromCoreTextAttributes;
+			
+			if([messageHTML containsString:@"went  at"])	//PCODE_OTR
+			{
+				NSImage * image2 = [NSImage imageNamed:@"chat-otr-status-icon"];
+				if(image2)
+					image.image = image2;
+				
+				//The next OTR status message we have to write
+				messageHTML = [session pollNextOTRMessage];
+				if(messageHTML == nil)	//Default message
+				{
+					messageHTML = @"<p><span style='font: bold 11px \"Helvetica Neue\"; -cocoa-font-postscriptname: \"HelveticaNeue-Bold\"; '>OTR Status:</span><span style='font: 11px \"Helvetica Neue\"; -cocoa-font-postscriptname: \"HelveticaNeue\"; '> Old OTR status, should've been discarded</span></p>";
+				}
+				
+				textField.attributedStringValue = [[NSAttributedString alloc] mn_initWithHTMLString:messageHTML];
+			}
+			
+			*stop = YES;
+		}
+	}];
 }
 
 //Hook FGOIMServiceConnection
 - (id) fgoIMServiceConnection_sendMessage:(FGOIMServiceMessage *) message fromAccount: (FGOAccount *) _account
 {
-	if(message.body != nil && ![message.body hasPrefix:@"?OTR"])	//We don't want to process already OTRed strings
+	if(message.body != nil && ![message.body hasPrefix:@OTR_HEADER])	//We don't want to process already OTRed strings
 	{
 		FlamingOTRAccount * account = [[FlamingOTR getShared] getContextForAccount:_account];
 		FlamingOTRSession * session = [account sessionWithUsername:message.to.name];
@@ -71,7 +141,7 @@
 {
 	if(message.body != nil)
 	{
-		if([message.body hasPrefix:@"?OTR"])
+		if([message.body hasPrefix:@OTR_HEADER])
 		{
 			FlamingOTRAccount * account = [[FlamingOTR getShared] getContextForAccount:[(FGOIMServiceConnection *) client.delegate accountForClient:client]];
 			
@@ -140,7 +210,7 @@
 				if(decryptedMessage != nil)
 				{
 					message.body = message.HTMLBody = decryptedMessage;
-					message.attributedContents = [[NSAttributedString alloc] mn_initWithHTMLString:message.body];
+					message.attributedContents = [[NSAttributedString alloc] mn_initWithHTMLString:message.HTMLBody];
 				}
 				
 				//Service message, to be discarded

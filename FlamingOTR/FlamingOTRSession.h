@@ -17,6 +17,8 @@
 @property (atomic) FOTRButton * button;
 @property (atomic, getter=isChangingSecureState) BOOL changeSecureState;
 
+@property (atomic) NSMutableArray * OTRMessages;
+
 @property (nonatomic) FlamingOTRAccount * account;
 
 - (instancetype) initWithController : (FGOChatViewController *) controller;
@@ -25,7 +27,9 @@
 - (NSString *) buddyUsername;
 
 - (void) sendString : (NSString *) string withAccount : (FGOAccount *) account;
+- (void) writeOTRStatus : (NSString *) string;
 - (void) writeString : (NSString *) string;
+- (NSString *) pollNextOTRMessage;
 
 - (BOOL) isOnline;
 

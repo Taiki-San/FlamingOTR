@@ -42,7 +42,7 @@ void gone_secure(void *opdata, ConnContext *context)
 	NSLog(@"OTR session from %@ with %@ is secure!", session.account.username, session.buddyUsername);
 #endif
 	
-	[session writeString: @"<b>OTR session started<b>"];
+	[session writeOTRStatus: @"Session started"];
 	
 	if(session != nil)
 		session.secure = YES;
@@ -58,7 +58,7 @@ void gone_insecure (void *opdata, ConnContext *context)
 	NSLog(@"OTR session from %@ with %@ is NOT secure!", session.account.username, session.buddyUsername);
 #endif
 	
-	[session writeString: @"<b>OTR session ended<b>"];
+	[session writeOTRStatus: @"Session ended"];
 	
 	if(session != nil)
 		session.secure = NO;
@@ -232,20 +232,20 @@ void handle_msg_event(void *opdata, OtrlMessageEvent msg_event, ConnContext *con
 		case OTRL_MSGEVENT_CONNECTION_ENDED:
 		{
 			if(session.isSecure)
-				[session writeString:@"<b>OTR session ended, you should do the same, as your contact won't be able to read you.<b>"];
+				[session writeOTRStatus:@"Session ended on the other side, you should do the same, as your contact won't be able to read you."];
 
 			break;
 		}
 			
 		case OTRL_MSGEVENT_SETUP_ERROR:
 		{
-			[session writeString: [NSString stringWithFormat:@"<b>Couldn't set up the encrypted channel, error: %s<b>", gpg_strerror(err)]];
+			[session writeOTRStatus: [NSString stringWithFormat:@"Couldn't set up the encrypted channel, error: %s", gpg_strerror(err)]];
 			break;
 		}
 			
 		case OTRL_MSGEVENT_MSG_REFLECTED:
 		{
-			[session writeString: @"<b>Someone is trying to play funny... We're receiving our own OTR messages...<b>"];
+			[session writeOTRStatus: @"Someone is trying to play funny... We're receiving our own OTR messages..."];
 			break;
 		}
 			
@@ -260,7 +260,7 @@ void handle_msg_event(void *opdata, OtrlMessageEvent msg_event, ConnContext *con
 		case OTRL_MSGEVENT_RCVDMSG_MALFORMED:
 		case OTRL_MSGEVENT_RCVDMSG_UNRECOGNIZED:
 		{
-			[session writeString: @"<b>We received some messages we couldn't parse :/<b>"];
+			[session writeOTRStatus: @"We received some messages we couldn't parse 🤕"];
 			break;
 		}
 			
@@ -275,14 +275,14 @@ void handle_msg_event(void *opdata, OtrlMessageEvent msg_event, ConnContext *con
 			
 		case OTRL_MSGEVENT_RCVDMSG_GENERAL_ERR:
 		{
-			[session writeString: [NSString stringWithFormat:@"<b>Something went very wrong: %s<b>", message]];
+			[session writeOTRStatus: [NSString stringWithFormat:@"Something went very wrong: %s", message]];
 			NSLog(@"Something went very wrong: %s", message);
 			break;
 		}
 			
 		case OTRL_MSGEVENT_RCVDMSG_UNENCRYPTED:
 		{
-			[session writeString:@"<b>Use OTR damnint<b>"];
+			[session writeOTRStatus:@"The other side isn't sending us private message"];
 			break;
 		}
 			

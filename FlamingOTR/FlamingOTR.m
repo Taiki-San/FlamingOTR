@@ -13,6 +13,7 @@ static FlamingOTR * singleton = nil;
 @interface FlamingOTR ()
 {
 	NSMutableDictionary * sessionController;
+	NSMutableDictionary * tableviewToSession;
 	
 	pthread_mutex_t tokenMutex;
 }
@@ -39,6 +40,7 @@ static FlamingOTR * singleton = nil;
 	{
 		pthread_mutex_init(&tokenMutex, NULL);
 		sessionController = [NSMutableDictionary new];
+		tableviewToSession = [NSMutableDictionary new];
 	}
 	
 	return self;
@@ -73,6 +75,18 @@ static FlamingOTR * singleton = nil;
 - (FlamingOTRAccount *) getContextForSignature : (NSString *) signature
 {
 	return [sessionController objectForKey:signature];
+}
+
+#pragma mark - Shortcut from the main tableview to the session
+
+- (void) registerSession : (FlamingOTRSession *) session withTableView : (FGOChatTableView *) tableview
+{
+	[tableviewToSession setObject:session forKey:@((uintptr_t) tableview)];
+}
+
+- (FlamingOTRSession *) sessionFromTableview : (FGOChatTableView *) tableview
+{
+	return [tableviewToSession objectForKey:@((uintptr_t) tableview)];
 }
 
 @end

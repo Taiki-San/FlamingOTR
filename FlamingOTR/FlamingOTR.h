@@ -7,6 +7,7 @@
 //
 
 #define DEFAULT_PROTOCOL "xmpp"
+#define OTR_HEADER "?OTR"
 
 @interface FlamingOTR : NSObject
 {
@@ -17,6 +18,9 @@
 
 - (nullable FlamingOTRAccount *) getContextForAccount : (nonnull FGOAccount *) account;
 - (nullable FlamingOTRAccount *) getContextForSignature : (nonnull NSString *) signature;
+
+- (void) registerSession : (nonnull FlamingOTRSession *) session withTableView : (nonnull FGOChatTableView *) tableview;
+- (nonnull FlamingOTRSession *) sessionFromTableview : (nonnull FGOChatTableView *) tableview;
 
 @end
 

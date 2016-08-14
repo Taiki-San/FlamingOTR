@@ -15,6 +15,7 @@
 	if(self != nil)
 	{
 		viewController = controller;
+		_OTRMessages = [NSMutableArray new];
 	}
 	
 	return self;
@@ -41,6 +42,27 @@
 															  fromAccount:account];
 }
 
+- (void) writeOTRStatus : (NSString *) string
+{
+	NSString * status = [NSString stringWithFormat:@"<p><span style='font: bold 11px \"Helvetica Neue\"; -cocoa-font-postscriptname: \"HelveticaNeue-Bold\"; '>OTR Status:</span><span style='font: 11px \"Helvetica Neue\"; -cocoa-font-postscriptname: \"HelveticaNeue\"; '> %@</span></p>", string];
+	
+	[_OTRMessages addObject:status];
+
+	FGOIMServicePresence * presence = [classWithName("FGOIMServicePresence") presenceWithType:PCODE_OTR];
+	
+	FGOPresenceChatMessage * message = [classWithName("FGOPresenceChatMessage") insertPresenceMessageForPresence:presence handleName:viewController.handleName inConversation:viewController.conversation];
+
+	if(message != nil)
+	{
+		[viewController queueAnimatedMessage:message animateLine:0x0];
+		[viewController animateEntranceForMessage:message];
+	}
+	else
+	{
+		[_OTRMessages removeLastObject];
+	}
+}
+
 - (void) writeString : (NSString *) string
 {
 	if (![NSThread isMainThread])
@@ -58,6 +80,19 @@
 		
 		[viewController showMessages:@[viewController.conversation.lastMessage]];
 	}
+}
+
+- (NSString *) pollNextOTRMessage
+{
+	NSString * output = nil;
+	
+	if([_OTRMessages count] != 0)
+	{
+		output = [_OTRMessages firstObject];
+		[_OTRMessages removeObjectAtIndex:0];
+	}
+	
+	return output;
 }
 
 #pragma mark - Properties
