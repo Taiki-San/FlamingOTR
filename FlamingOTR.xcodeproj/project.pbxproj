@@ -16,7 +16,6 @@
 		B636EDFC1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m in Sources */ = {isa = PBXBuildFile; fileRef = B636EDFB1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m */; };
 		B636EE041D1F00A400BC4B5D /* libgcrypt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B636EE031D1F00A400BC4B5D /* libgcrypt.a */; };
 		B636EE061D1F013800BC4B5D /* libgpg-error.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B636EE051D1F013800BC4B5D /* libgpg-error.a */; };
-		B65133E71D201AB600A73BFB /* FOTRUserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65133E61D201AB600A73BFB /* FOTRUserContext.swift */; };
 		B671E8851D0866EA000F23D5 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B671E86B1D08609A000F23D5 /* main.c */; };
 		B671E8891D086801000F23D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B671E8881D086801000F23D5 /* Images.xcassets */; };
 		B671E88E1D086B46000F23D5 /* Flamingo.app in Resources */ = {isa = PBXBuildFile; fileRef = B671E88D1D086B46000F23D5 /* Flamingo.app */; };
@@ -26,6 +25,7 @@
 		B6912A0D1D26D5E200E6E508 /* FlamingOTRAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = B6912A0B1D26D5E200E6E508 /* FlamingOTRAccount.m */; };
 		B6912A101D28097500E6E508 /* FlamingOTRSession.h in Headers */ = {isa = PBXBuildFile; fileRef = B6912A0E1D28097500E6E508 /* FlamingOTRSession.h */; };
 		B6912A111D28097500E6E508 /* FlamingOTRSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6912A0F1D28097500E6E508 /* FlamingOTRSession.m */; };
+		B6BFF4451D5F61430040F90F /* FOTRUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BFF4441D5F61430040F90F /* FOTRUserContext.m */; };
 		B6F79D771D16C94A00415AB1 /* FOTRButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B6F79D751D16C94A00415AB1 /* FOTRButton.h */; };
 		B6F79D781D16C94A00415AB1 /* FOTRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F79D761D16C94A00415AB1 /* FOTRButton.m */; };
 		B6FA42071D0AD15900BDD9BB /* FlamingHook.h in Headers */ = {isa = PBXBuildFile; fileRef = B6FA42051D0AD15900BDD9BB /* FlamingHook.h */; };
@@ -77,6 +77,9 @@
 		B6912A0B1D26D5E200E6E508 /* FlamingOTRAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlamingOTRAccount.m; sourceTree = "<group>"; };
 		B6912A0E1D28097500E6E508 /* FlamingOTRSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlamingOTRSession.h; sourceTree = "<group>"; };
 		B6912A0F1D28097500E6E508 /* FlamingOTRSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlamingOTRSession.m; sourceTree = "<group>"; };
+		B6BFF4441D5F61430040F90F /* FOTRUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FOTRUserContext.m; sourceTree = "<group>"; };
+		B6BFF4461D5F68240040F90F /* FOTRUserContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FOTRUserContext.h; sourceTree = "<group>"; };
+		B6F631201D2995550097A40D /* Flamingo */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = Flamingo; path = Flamingo/Flamingo.app/Contents/MacOS/Flamingo; sourceTree = "<group>"; };
 		B6F79D701D16C89100415AB1 /* lock-locked.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "lock-locked.tiff"; path = "Ressources/lock-locked.tiff"; sourceTree = "<group>"; };
 		B6F79D711D16C89100415AB1 /* lock-unlocked.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "lock-unlocked.tiff"; path = "Ressources/lock-unlocked.tiff"; sourceTree = "<group>"; };
 		B6F79D751D16C94A00415AB1 /* FOTRButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FOTRButton.h; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 				B62572511D0709A900978F5D /* FlamingOTR */,
 				B671E8751D0866CB000F23D5 /* Flamingo */,
 				B62572501D0709A900978F5D /* Products */,
+				B6F6311F1D2995550097A40D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,15 +167,17 @@
 		B636EE001D1EF12200BC4B5D /* OTR */ = {
 			isa = PBXGroup;
 			children = (
-				B6912A0A1D26D5E200E6E508 /* FlamingOTRAccount.h */,
-				B6912A0B1D26D5E200E6E508 /* FlamingOTRAccount.m */,
-				B6912A0E1D28097500E6E508 /* FlamingOTRSession.h */,
-				B6912A0F1D28097500E6E508 /* FlamingOTRSession.m */,
 				B65133E51D201AB500A73BFB /* FlamingOTR-Bridging-Header.h */,
 				B62572521D0709A900978F5D /* FlamingOTR.h */,
 				B62572541D0709A900978F5D /* FlamingOTR.m */,
 				B636EDFB1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m */,
 				B636EDF91D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m */,
+				B6912A0A1D26D5E200E6E508 /* FlamingOTRAccount.h */,
+				B6912A0B1D26D5E200E6E508 /* FlamingOTRAccount.m */,
+				B6912A0E1D28097500E6E508 /* FlamingOTRSession.h */,
+				B6912A0F1D28097500E6E508 /* FlamingOTRSession.m */,
+				B6BFF4461D5F68240040F90F /* FOTRUserContext.h */,
+				B6BFF4441D5F61430040F90F /* FOTRUserContext.m */,
 				B65133E61D201AB600A73BFB /* FOTRUserContext.swift */,
 				B6322D5A1D25D3B300BFC6DA /* libotr_callback.m */,
 				B636EDFD1D1EF0D600BC4B5D /* libotr.h */,
@@ -213,6 +219,14 @@
 				B6782C401D16A299007F1573 /* XMPPFramework.framework */,
 			);
 			name = "Flamingo Frameworks";
+			sourceTree = "<group>";
+		};
+		B6F6311F1D2995550097A40D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6F631201D2995550097A40D /* Flamingo */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B6F79D741D16C89800415AB1 /* Ressources */ = {
@@ -338,6 +352,7 @@
 			files = (
 				B636EDFA1D1EEE3000BC4B5D /* FlamingOTR+OTRHub.m in Sources */,
 				B62572551D0709A900978F5D /* FlamingOTR.m in Sources */,
+				B6BFF4451D5F61430040F90F /* FOTRUserContext.m in Sources */,
 				B6322D5B1D25D3B300BFC6DA /* libotr_callback.m in Sources */,
 				B6912A111D28097500E6E508 /* FlamingOTRSession.m in Sources */,
 				B6912A0D1D26D5E200E6E508 /* FlamingOTRAccount.m in Sources */,
@@ -345,7 +360,6 @@
 				B6F79D781D16C94A00415AB1 /* FOTRButton.m in Sources */,
 				B636EDFC1D1EEF4000BC4B5D /* FlamingOTR+HighLibOTR.m in Sources */,
 				B6FA42081D0AD15900BDD9BB /* FlamingHook.m in Sources */,
-				B65133E71D201AB600A73BFB /* FOTRUserContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,14 +500,12 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libotr/**";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path../Frameworks @loader_path/../Frameworks /Applications/Xcode-beta.app/Contents/SharedFrameworks/";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libotr",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "FlamingOTR/FlamingOTR-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FlamingOTR/Dumped\\ Frameworks";
 			};
 			name = Debug;
@@ -536,14 +548,12 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libotr/**";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path../Frameworks @loader_path/../Frameworks /Applications/Xcode-beta.app/Contents/SharedFrameworks/";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libotr",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "FlamingOTR/FlamingOTR-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/FlamingOTR/Dumped\\ Frameworks";
 			};
 			name = Release;
@@ -551,7 +561,6 @@
 		B671E8831D0866CB000F23D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -567,7 +576,6 @@
 		B671E8841D0866CB000F23D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;

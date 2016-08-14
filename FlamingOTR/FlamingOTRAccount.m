@@ -40,7 +40,7 @@
 {
 	if(OTRContext == NULL)
 	{
-		OTRContext = [[UserContext alloc] initWithAccount : self.signature];
+		OTRContext = [[FOTRUserContext alloc] initWithAccount : self.signature];
 	}
 }
 

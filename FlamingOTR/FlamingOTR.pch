@@ -43,8 +43,6 @@ typedef uint8_t byte;
 
 	#include "Flamingo.h"
 
-	#import "FlamingOTR-Swift.h"
-
 	#import "FOTRButton.h"
 	#import "FlamingOTRSession.h"
 	#import "FlamingOTRAccount.h"

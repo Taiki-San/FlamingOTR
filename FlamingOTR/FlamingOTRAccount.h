@@ -6,6 +6,8 @@
 //  Copyright © 2016 Taiki. All rights reserved.
 //
 
+#include "FOTRUserContext.h"
+
 @interface FlamingOTRAccount : NSObject
 {
 	FGOAccount * account;
@@ -19,14 +21,14 @@
 	
 	NSString * cachedSignature;
 	
-	UserContext * OTRContext;
+	FOTRUserContext * OTRContext;
 	
 	NSMutableDictionary * sessions;
 }
 
 @property (atomic, readonly) NSString * username;
 @property (atomic, readonly) NSString * realName;
-@property (atomic, readonly) UserContext* OTRContext;
+@property (atomic, readonly) FOTRUserContext* OTRContext;
 
 @property (atomic) BOOL shouldResetTimer;
 @property (atomic) BOOL hasTimer;
