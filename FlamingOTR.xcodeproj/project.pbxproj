@@ -56,7 +56,6 @@
 		B636EE031D1F00A400BC4B5D /* libgcrypt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgcrypt.a; path = libotr/libgcrypt.a; sourceTree = SOURCE_ROOT; };
 		B636EE051D1F013800BC4B5D /* libgpg-error.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgpg-error.a"; path = "libotr/libgpg-error.a"; sourceTree = SOURCE_ROOT; };
 		B65133E51D201AB500A73BFB /* FlamingOTR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlamingOTR-Bridging-Header.h"; sourceTree = "<group>"; };
-		B65133E61D201AB600A73BFB /* FOTRUserContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FOTRUserContext.swift; sourceTree = "<group>"; };
 		B671E86B1D08609A000F23D5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		B671E8741D0866CB000F23D5 /* Flamingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flamingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B671E8811D0866CB000F23D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,7 +177,6 @@
 				B6912A0F1D28097500E6E508 /* FlamingOTRSession.m */,
 				B6BFF4461D5F68240040F90F /* FOTRUserContext.h */,
 				B6BFF4441D5F61430040F90F /* FOTRUserContext.m */,
-				B65133E61D201AB600A73BFB /* FOTRUserContext.swift */,
 				B6322D5A1D25D3B300BFC6DA /* libotr_callback.m */,
 				B636EDFD1D1EF0D600BC4B5D /* libotr.h */,
 			);

@@ -217,15 +217,13 @@ void handle_msg_event(void *opdata, OtrlMessageEvent msg_event, ConnContext *con
 	{
 		case OTRL_MSGEVENT_ENCRYPTION_REQUIRED:
 		{
-#warning "Could be worth sending this message"
-			NSLog(@"Hum, you're trying to send an unencrypted message but you said you wanted to enforce strictly your privacy with this contact :/");
+			[session writeOTRStatus:@"Hum, you're trying to send an unencrypted message but you said you wanted to enforce strictly your privacy with this contact :/"];
 			break;
 		}
 			
 		case OTRL_MSGEVENT_ENCRYPTION_ERROR:
 		{
-#warning "Could be worth sending this message"
-			NSLog(@"OTR error, maths^W^Wour crypto module is breaking down");
+			[session writeOTRStatus:@"Error: math^W^Wour crypto module is breaking down"];
 			break;
 		}
 			

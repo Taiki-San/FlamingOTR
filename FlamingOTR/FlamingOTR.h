@@ -20,7 +20,7 @@
 - (nullable FlamingOTRAccount *) getContextForSignature : (nonnull NSString *) signature;
 
 - (void) registerSession : (nonnull FlamingOTRSession *) session withTableView : (nonnull FGOChatTableView *) tableview;
-- (nonnull FlamingOTRSession *) sessionFromTableview : (nonnull FGOChatTableView *) tableview;
+- (nullable FlamingOTRSession *) sessionFromTableview : (nonnull FGOChatTableView *) tableview;
 
 @end
 
